@@ -1,0 +1,500 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:CFS-CAMP-{####}",
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "scope_section",
+  "title",
+  "status",
+  "active_phase",
+  "control_flag",
+  "scope_column_break",
+  "include_public",
+  "include_private",
+  "adopt_legacy_fork_rows",
+  "adopt_remote_https_rows",
+  "dedupe_by_content_hash",
+  "policy_section",
+  "batch_size",
+  "parallelism",
+  "bandwidth_limit_mbps",
+  "max_attempts",
+  "retry_backoff_base_secs",
+  "policy_column_break",
+  "multipart_threshold_mb",
+  "verify_strategy_cutover_mb",
+  "cleanup_mode",
+  "quarantine_ttl_days",
+  "queue",
+  "fallback_queue_used",
+  "approval_section",
+  "cleanup_approved_by",
+  "cleanup_approved_at",
+  "approval_column_break",
+  "cleanup_approval_note",
+  "preflight_section",
+  "preflight_status",
+  "preflight_at",
+  "preflight_column_break",
+  "preflight_report",
+  "progress_section",
+  "scan_cursor_file",
+  "fs_entries_seen",
+  "classify_step",
+  "total_files",
+  "total_objects",
+  "progress_column_break",
+  "started_at",
+  "completed_at",
+  "last_error",
+  "counters_section",
+  "objects_pending",
+  "objects_uploading",
+  "objects_uploaded",
+  "objects_verified",
+  "objects_cleaned",
+  "counters_column_break",
+  "objects_failed",
+  "objects_conflict",
+  "objects_skipped",
+  "objects_adopted",
+  "objects_dedup_reused",
+  "bytes_section",
+  "bytes_total",
+  "bytes_uploaded",
+  "bytes_column_break",
+  "bytes_verified",
+  "bytes_reclaimed"
+ ],
+ "fields": [
+  {
+   "fieldname": "scope_section",
+   "fieldtype": "Section Break",
+   "label": "Campaign"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "description": "A9 \u2014 frozen campaign state machine. Changed only through migration/api.py.",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nAnalyzing\nAnalyzed\nPlanned\nRunning\nPaused\nStopping\nStopped\nCleanup Running\nCompleted\nFailed",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "active_phase",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Active Phase",
+   "options": "\nSCAN_DB\nSCAN_FS\nCLASSIFY\nUPLOAD\nVERIFY\nCLEANUP",
+   "read_only": 1
+  },
+  {
+   "description": "Polled per object by workers. Set by pause/stop, cleared by resume.",
+   "fieldname": "control_flag",
+   "fieldtype": "Select",
+   "label": "Control Flag",
+   "options": "\nPAUSE\nSTOP",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scope_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "include_public",
+   "fieldtype": "Check",
+   "label": "Include Public"
+  },
+  {
+   "default": "1",
+   "fieldname": "include_private",
+   "fieldtype": "Check",
+   "label": "Include Private"
+  },
+  {
+   "default": "1",
+   "fieldname": "adopt_legacy_fork_rows",
+   "fieldtype": "Check",
+   "label": "Adopt Legacy Fork Rows"
+  },
+  {
+   "default": "1",
+   "description": "A18 \u2014 ON for remote URLs whose host/bucket matches the configured bucket. Others stay Skipped.",
+   "fieldname": "adopt_remote_https_rows",
+   "fieldtype": "Check",
+   "label": "Adopt Remote Https Rows"
+  },
+  {
+   "default": "1",
+   "fieldname": "dedupe_by_content_hash",
+   "fieldtype": "Check",
+   "label": "Dedupe By Content Hash"
+  },
+  {
+   "fieldname": "policy_section",
+   "fieldtype": "Section Break",
+   "label": "Execution Policy"
+  },
+  {
+   "default": "1000",
+   "fieldname": "batch_size",
+   "fieldtype": "Int",
+   "label": "Batch Size"
+  },
+  {
+   "default": "2",
+   "fieldname": "parallelism",
+   "fieldtype": "Int",
+   "label": "Parallelism"
+  },
+  {
+   "default": "0",
+   "description": "0 = unthrottled.",
+   "fieldname": "bandwidth_limit_mbps",
+   "fieldtype": "Int",
+   "label": "Bandwidth Limit Mbps"
+  },
+  {
+   "default": "5",
+   "fieldname": "max_attempts",
+   "fieldtype": "Int",
+   "label": "Max Attempts"
+  },
+  {
+   "default": "60",
+   "fieldname": "retry_backoff_base_secs",
+   "fieldtype": "Int",
+   "label": "Retry Backoff Base Secs"
+  },
+  {
+   "fieldname": "policy_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "64",
+   "fieldname": "multipart_threshold_mb",
+   "fieldtype": "Int",
+   "label": "Multipart Threshold Mb"
+  },
+  {
+   "default": "64",
+   "description": "A12 \u2014 must be <= multipart_threshold_mb. Below it VERIFY compares the HEAD checksum; at or above it re-GETs and re-hashes.",
+   "fieldname": "verify_strategy_cutover_mb",
+   "fieldtype": "Int",
+   "label": "Verify Strategy Cutover Mb"
+  },
+  {
+   "default": "Quarantine",
+   "fieldname": "cleanup_mode",
+   "fieldtype": "Select",
+   "label": "Cleanup Mode",
+   "options": "Quarantine\nDirect Delete"
+  },
+  {
+   "default": "14",
+   "fieldname": "quarantine_ttl_days",
+   "fieldtype": "Int",
+   "label": "Quarantine Ttl Days"
+  },
+  {
+   "description": "The queue this campaign's jobs actually went to.",
+   "fieldname": "queue",
+   "fieldtype": "Data",
+   "label": "Queue",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Set when the campaign was started with --force-fallback-queue. Never silent.",
+   "fieldname": "fallback_queue_used",
+   "fieldtype": "Check",
+   "label": "Fallback Queue Used",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_section",
+   "fieldtype": "Section Break",
+   "label": "Cleanup Approval"
+  },
+  {
+   "fieldname": "cleanup_approved_by",
+   "fieldtype": "Link",
+   "label": "Cleanup Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cleanup_approved_at",
+   "fieldtype": "Datetime",
+   "label": "Cleanup Approved At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cleanup_approval_note",
+   "fieldtype": "Small Text",
+   "label": "Cleanup Approval Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "preflight_section",
+   "fieldtype": "Section Break",
+   "label": "Capacity Preflight (A29 / F4)"
+  },
+  {
+   "default": "Not Run",
+   "fieldname": "preflight_status",
+   "fieldtype": "Select",
+   "label": "Preflight Status",
+   "options": "Not Run\nPassed\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "preflight_at",
+   "fieldtype": "Datetime",
+   "label": "Preflight At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "preflight_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Measured F4 quantities and the projection to production scale.",
+   "fieldname": "preflight_report",
+   "fieldtype": "Code",
+   "label": "Preflight Report",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "progress_section",
+   "fieldtype": "Section Break",
+   "label": "Progress"
+  },
+  {
+   "fieldname": "scan_cursor_file",
+   "fieldtype": "Data",
+   "label": "Scan Cursor File",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "fs_entries_seen",
+   "fieldtype": "Int",
+   "label": "Fs Entries Seen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "classify_step",
+   "fieldtype": "Data",
+   "label": "Classify Step",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_files",
+   "fieldtype": "Int",
+   "label": "Total Files",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_objects",
+   "fieldtype": "Int",
+   "label": "Total Objects",
+   "read_only": 1
+  },
+  {
+   "fieldname": "progress_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "counters_section",
+   "fieldtype": "Section Break",
+   "label": "Counters"
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_pending",
+   "fieldtype": "Int",
+   "label": "Objects Pending",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_uploading",
+   "fieldtype": "Int",
+   "label": "Objects Uploading",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_uploaded",
+   "fieldtype": "Int",
+   "label": "Objects Uploaded",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_verified",
+   "fieldtype": "Int",
+   "label": "Objects Verified",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_cleaned",
+   "fieldtype": "Int",
+   "label": "Objects Cleaned",
+   "read_only": 1
+  },
+  {
+   "fieldname": "counters_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_failed",
+   "fieldtype": "Int",
+   "label": "Objects Failed",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_conflict",
+   "fieldtype": "Int",
+   "label": "Objects Conflict",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_skipped",
+   "fieldtype": "Int",
+   "label": "Objects Skipped",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_adopted",
+   "fieldtype": "Int",
+   "label": "Objects Adopted",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_dedup_reused",
+   "fieldtype": "Int",
+   "label": "Objects Dedup Reused",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bytes_section",
+   "fieldtype": "Section Break",
+   "label": "Bytes"
+  },
+  {
+   "default": "0",
+   "fieldname": "bytes_total",
+   "fieldtype": "Long Int",
+   "label": "Bytes Total",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "bytes_uploaded",
+   "fieldtype": "Long Int",
+   "label": "Bytes Uploaded",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bytes_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "bytes_verified",
+   "fieldtype": "Long Int",
+   "label": "Bytes Verified",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "bytes_reclaimed",
+   "fieldtype": "Long Int",
+   "label": "Bytes Reclaimed",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Migration Campaign",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

@@ -1,0 +1,102 @@
+# actions/labeler configuration (v5 schema).
+#
+# Requires a workflow that runs `actions/labeler@v5` or newer; the v4 `any:`/`all:` shorthand
+# these globs replace is not accepted by v5. Paths below are this repository's real layout --
+# every glob resolves to a directory that exists.
+
+storage:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/storage/**
+          - cloud_file_storage/overrides/**
+          - cloud_file_storage/core_hooks.py
+          - cloud_file_storage/gc.py
+
+serving:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/serving/**
+          - cloud_file_storage/templates/**
+
+migration:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/migration/**
+
+backup:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/backup/**
+
+cache:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/cache/**
+
+api:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/api/**
+
+desk:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/cloud_file_storage/doctype/**
+          - cloud_file_storage/cloud_file_storage/page/**
+          - cloud_file_storage/cloud_file_storage/workspace/**
+
+# A schema or fixture change has to arrive with an idempotent patch (docs/INVARIANTS.md invariant 9).
+schema:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/**/doctype/**/*.json
+          - cloud_file_storage/patches/**
+          - cloud_file_storage/patches.txt
+          - cloud_file_storage/install.py
+
+# The compatibility contract. Any change here is reviewed as a behaviour change to File.
+contract:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/tests/contract/**
+
+cli:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/commands.py
+
+hooks:
+  - changed-files:
+      - any-glob-to-any-file:
+          - cloud_file_storage/hooks.py
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/**
+          - "*.md"
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**
+          - .pre-commit-config.yaml
+          - commitlint.config.mjs
+          - .releaserc
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - pyproject.toml
+
+# Python in the package changed, but nothing under tests/ did. Every bug fix ships a regression
+# test (CONTRIBUTING.md section 6), so this label is a prompt to the reviewer, not a verdict --
+# a pure rename or a comment fix will trip it legitimately.
+needs-tests:
+  - all:
+      - changed-files:
+          - any-glob-to-any-file:
+              - cloud_file_storage/**/*.py
+      - changed-files:
+          - all-globs-to-all-files:
+              - "!cloud_file_storage/tests/**"

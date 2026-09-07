@@ -1,0 +1,172 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:{campaign}-B{batch_no}",
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "batch_section",
+  "campaign",
+  "batch_no",
+  "status",
+  "phase",
+  "batch_column_break",
+  "object_count",
+  "objects_done",
+  "objects_failed",
+  "bytes_total",
+  "bytes_done",
+  "execution_section",
+  "attempts",
+  "heartbeat_at",
+  "worker_host",
+  "execution_column_break",
+  "rq_job_id",
+  "last_error"
+ ],
+ "fields": [
+  {
+   "fieldname": "batch_section",
+   "fieldtype": "Section Break",
+   "label": "Batch"
+  },
+  {
+   "fieldname": "campaign",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Campaign",
+   "options": "Cloud Migration Campaign",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nUploadDispatched\nUploading\nUploaded\nVerifyDispatched\nVerifying\nVerified\nCleanupDispatched\nCleaning\nCleaned\nFailed\nStalled",
+   "search_index": 1
+  },
+  {
+   "default": "UPLOAD",
+   "fieldname": "phase",
+   "fieldtype": "Select",
+   "label": "Phase",
+   "options": "UPLOAD\nVERIFY\nCLEANUP"
+  },
+  {
+   "fieldname": "batch_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "object_count",
+   "fieldtype": "Int",
+   "label": "Object Count"
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_done",
+   "fieldtype": "Int",
+   "label": "Objects Done"
+  },
+  {
+   "default": "0",
+   "fieldname": "objects_failed",
+   "fieldtype": "Int",
+   "label": "Objects Failed"
+  },
+  {
+   "default": "0",
+   "fieldname": "bytes_total",
+   "fieldtype": "Long Int",
+   "label": "Bytes Total"
+  },
+  {
+   "default": "0",
+   "fieldname": "bytes_done",
+   "fieldtype": "Long Int",
+   "label": "Bytes Done"
+  },
+  {
+   "fieldname": "execution_section",
+   "fieldtype": "Section Break",
+   "label": "Execution"
+  },
+  {
+   "default": "0",
+   "fieldname": "attempts",
+   "fieldtype": "Int",
+   "label": "Attempts"
+  },
+  {
+   "fieldname": "heartbeat_at",
+   "fieldtype": "Datetime",
+   "label": "Heartbeat At"
+  },
+  {
+   "fieldname": "worker_host",
+   "fieldtype": "Data",
+   "label": "Worker Host"
+  },
+  {
+   "fieldname": "execution_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rq_job_id",
+   "fieldtype": "Data",
+   "label": "Rq Job Id"
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Migration Batch",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

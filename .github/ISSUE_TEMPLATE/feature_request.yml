@@ -1,0 +1,80 @@
+name: Feature Request
+description: Suggest a capability for Cloud File Storage
+labels: ["feature-request"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, please check the following.
+
+        1. Search existing issues — including closed ones. Some requests were considered and
+           declined for a reason that is written down.
+        2. **The hard invariants are not negotiable.** Zero delete-before-verify, canonical
+           `file_url` only, no `ACL` key in any S3 call, physical deletes only in deferred GC,
+           raw SQL only at the three sanctioned sites. A request that requires breaking one of
+           these will be declined regardless of its merit. They are listed in
+           [docs/INVARIANTS.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/docs/INVARIANTS.md).
+        3. Some things are already decided and recorded rather than open: the `s3_key_generator`
+           hook is not honoured (keys are content-addressed and are the object's identity),
+           object ACLs are gone for good, and per-object `public-read` will not come back.
+           `README.md` and `docs/source-comparison.md` carry the reasoning.
+        4. Features land on `develop`. They are backported to a maintenance line only if they
+           apply cleanly — see
+           [docs/BRANCHING.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/docs/BRANCHING.md).
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: The situation you are in, not the solution you have in mind. What is currently impossible, unsafe, or unreasonably manual?
+      placeholder: Please provide as much information as possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the behaviour you want
+      description: Concretely. Which surface — Desk form, whitelisted API, bench command, background job? What does an operator see, and what changes in the bucket or the database?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What have you tried or considered?
+      description: Existing settings, an operation mode change, a migration campaign, a bucket policy, a site-level customisation. If something almost works, say where it stops.
+
+  - type: dropdown
+    id: version-line
+    attributes:
+      label: Which line does this concern?
+      options:
+        - 16.x (version-16)
+        - 15.x (version-15)
+        - Both
+        - Not version-specific
+    validations:
+      required: false
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Data-safety and compatibility impact
+      description: Does this touch deletion, object identity, `file_url`, permissions, credentials, or the File schema? If you are not sure, say so — an honest "I do not know" is more useful than a guess.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Scale (file count, total bytes), object store, screenshots, links to related issues.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow the [Code of Conduct](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

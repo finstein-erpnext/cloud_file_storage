@@ -1,0 +1,19 @@
+{
+  "objects_uploading": 0,
+  "objects_pending": 99851,
+  "objects_verified": 0,
+  "objects_conflict": 116,
+  "objects_failed": 0,
+  "objects_dedup_reused": 0,
+  "objects_cleaned": 0,
+  "objects_adopted": 0,
+  "objects_uploaded": 0,
+  "objects_skipped": 53,
+  "total_objects": 100020,
+  "total_files": 100142,
+  "bytes_total": 26006449,
+  "bytes_uploaded": 0,
+  "bytes_verified": 0,
+  "campaign": "CFS-CAMP-0004",
+  "seconds": 40.74
+}

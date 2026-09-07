@@ -1,0 +1,51 @@
+{
+  "measurements": [
+    {
+      "batch": "CFS-CAMP-0009-B1",
+      "limit_mbps": 2,
+      "limit_bytes_per_second": 250000.0,
+      "objects": 100,
+      "bytes_progress_accounted": 30172702,
+      "bytes_transferred": 30172702,
+      "bytes_dedup_reused": 0,
+      "consume_calls": 100,
+      "uploaded_objects": 100,
+      "dedup_reused_objects": 0,
+      "failed_objects": 0,
+      "throttle_slept_seconds": 115.837977,
+      "percent_of_ceiling": 99.97,
+      "seconds": 120.73,
+      "status": "MEASURED",
+      "achieved_bytes_per_second": 249925.8
+    },
+    {
+      "batch": "CFS-CAMP-0009-B2",
+      "limit_mbps": 0,
+      "limit_bytes_per_second": null,
+      "objects": 100,
+      "bytes_progress_accounted": 30253262,
+      "bytes_transferred": 30253262,
+      "bytes_dedup_reused": 0,
+      "consume_calls": 100,
+      "uploaded_objects": 100,
+      "dedup_reused_objects": 0,
+      "failed_objects": 0,
+      "throttle_slept_seconds": 0.0,
+      "percent_of_ceiling": null,
+      "seconds": 3.69,
+      "status": "MEASURED",
+      "achieved_bytes_per_second": 8208384.3
+    }
+  ],
+  "passed": true,
+  "THROTTLE_CRITERION": "PASS",
+  "measurement_state": "VALID_MEASUREMENT",
+  "throttle_engaged": true,
+  "sleep_fraction": 0.9595,
+  "utilisation_of_ceiling": 0.9997,
+  "unthrottled_speedup": 32.84,
+  "site": "cfs-thr4.local",
+  "campaign": "CFS-CAMP-0009",
+  "bucket": "cfs-thr-remeasure-20260819g",
+  "at": "2026-08-19 12:12:56.034593"
+}

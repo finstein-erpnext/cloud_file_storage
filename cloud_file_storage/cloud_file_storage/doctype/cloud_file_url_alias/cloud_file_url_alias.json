@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:url_hash",
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "alias_section",
+  "old_url",
+  "url_hash",
+  "alias_column_break",
+  "new_url",
+  "file",
+  "provenance_section",
+  "reason",
+  "migration_campaign",
+  "provenance_column_break",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "alias_section",
+   "fieldtype": "Section Break",
+   "label": "Alias"
+  },
+  {
+   "description": "The URL that stopped resolving. Length 500 per A11 — long attachment names plus a private prefix overrun the 140-char Data default.",
+   "fieldname": "old_url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Old URL",
+   "length": 500,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "description": "SHA1 of old_url. Data(40) with a unique index (A11): old_url itself is too long to index directly.",
+   "fieldname": "url_hash",
+   "fieldtype": "Data",
+   "label": "URL Hash",
+   "length": 40,
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "alias_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "The canonical URL to redirect to. Always /files/... or /private/files/...",
+   "fieldname": "new_url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "New URL",
+   "length": 500,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "description": "The File row that now owns new_url, when it is known. Informational: serving re-runs the permission gate against the resolved URL, never against this link.",
+   "fieldname": "file",
+   "fieldtype": "Link",
+   "label": "File",
+   "options": "File",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provenance_section",
+   "fieldtype": "Section Break",
+   "label": "Provenance"
+  },
+  {
+   "default": "manual",
+   "fieldname": "reason",
+   "fieldtype": "Select",
+   "label": "Reason",
+   "options": "manual\nconflict\nrelink\nadoption\nprivacy_flip",
+   "read_only": 1
+  },
+  {
+   "fieldname": "migration_campaign",
+   "fieldtype": "Data",
+   "label": "Migration Campaign",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provenance_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note",
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud File URL Alias",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

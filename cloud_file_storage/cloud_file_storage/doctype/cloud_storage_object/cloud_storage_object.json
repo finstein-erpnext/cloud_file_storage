@@ -1,0 +1,307 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "identity_section",
+  "content_sha256",
+  "content_hash_md5",
+  "file_size",
+  "identity_column_break",
+  "mime_type",
+  "visibility",
+  "status",
+  "location_section",
+  "bucket",
+  "s3_key",
+  "location_column_break",
+  "sse_mode",
+  "kms_key_id",
+  "verification_section",
+  "etag",
+  "checksum_sha256_s3",
+  "version_id",
+  "verification_column_break",
+  "uploaded_at",
+  "verified_at",
+  "lifecycle_section",
+  "deletion_scheduled_at",
+  "status_before_delete",
+  "reference_count",
+  "lifecycle_column_break",
+  "retry_count",
+  "last_error",
+  "provenance_section",
+  "source_path",
+  "migration_batch",
+  "provenance_column_break",
+  "derived_of",
+  "derived_suffix"
+ ],
+ "fields": [
+  {
+   "fieldname": "identity_section",
+   "fieldtype": "Section Break",
+   "label": "Identity"
+  },
+  {
+   "description": "SHA256 of the object bytes. The physical identity of the object (A7).",
+   "fieldname": "content_sha256",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Content SHA256",
+   "length": 64,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "description": "MD5 of the same bytes, mirroring tabFile.content_hash so core dedup keeps working.",
+   "fieldname": "content_hash_md5",
+   "fieldtype": "Data",
+   "label": "Content Hash (MD5)",
+   "length": 32,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "description": "Bytes. Long Int: Int is int(11) on MariaDB and overflows above 2GB (A24).",
+   "fieldname": "file_size",
+   "fieldtype": "Long Int",
+   "in_list_view": 1,
+   "label": "File Size",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "identity_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mime_type",
+   "fieldtype": "Data",
+   "label": "MIME Type",
+   "read_only": 1
+  },
+  {
+   "default": "private",
+   "description": "Encoded in the key prefix as pub/ or prv/. Part of the dedup identity.",
+   "fieldname": "visibility",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Visibility",
+   "options": "public\nprivate",
+   "read_only": 1
+  },
+  {
+   "default": "pending_upload",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "pending_upload\nuploaded\nverified\nfailed\norphaned\npending_delete\ndeleted\nlegacy_unverified",
+   "read_only": 1
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "fieldname": "bucket",
+   "fieldtype": "Data",
+   "label": "Bucket",
+   "read_only": 1
+  },
+  {
+   "description": "Full object key. Unique: two Cloud Storage Objects can never claim one object.",
+   "fieldname": "s3_key",
+   "fieldtype": "Data",
+   "label": "S3 Key",
+   "length": 500,
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "location_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sse_mode",
+   "fieldtype": "Select",
+   "label": "Server Side Encryption",
+   "options": "\nSSE-S3\nSSE-KMS",
+   "read_only": 1
+  },
+  {
+   "fieldname": "kms_key_id",
+   "fieldtype": "Data",
+   "label": "KMS Key ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "Verification"
+  },
+  {
+   "fieldname": "etag",
+   "fieldtype": "Data",
+   "label": "ETag",
+   "read_only": 1
+  },
+  {
+   "description": "Base64 SHA256 returned by S3 when the object was stored with a checksum.",
+   "fieldname": "checksum_sha256_s3",
+   "fieldtype": "Data",
+   "label": "S3 Checksum SHA256",
+   "read_only": 1
+  },
+  {
+   "fieldname": "version_id",
+   "fieldtype": "Data",
+   "label": "Version ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verification_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uploaded_at",
+   "fieldtype": "Datetime",
+   "label": "Uploaded At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verified_at",
+   "fieldtype": "Datetime",
+   "label": "Verified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lifecycle_section",
+   "fieldtype": "Section Break",
+   "label": "Lifecycle"
+  },
+  {
+   "description": "Set when the last reference goes away. Garbage collection is the only physical delete path.",
+   "fieldname": "deletion_scheduled_at",
+   "fieldtype": "Datetime",
+   "label": "Deletion Scheduled At",
+   "read_only": 1
+  },
+  {
+   "description": "Status captured on entering pending_delete so a resurrection restores it instead of upgrading (A15).",
+   "fieldname": "status_before_delete",
+   "fieldtype": "Select",
+   "label": "Status Before Delete",
+   "options": "\npending_upload\nuploaded\nverified\nfailed\norphaned\nlegacy_unverified",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Denormalized for list views only. NEVER authoritative: the live count is derived from tabFile under a row lock (ADR-4).",
+   "fieldname": "reference_count",
+   "fieldtype": "Long Int",
+   "in_list_view": 1,
+   "label": "Reference Count",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "lifecycle_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "retry_count",
+   "fieldtype": "Int",
+   "label": "Retry Count",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provenance_section",
+   "fieldtype": "Section Break",
+   "label": "Provenance"
+  },
+  {
+   "description": "Original local relative path, for migration and audit provenance only.",
+   "fieldname": "source_path",
+   "fieldtype": "Data",
+   "label": "Source Path",
+   "length": 500,
+   "read_only": 1
+  },
+  {
+   "fieldname": "migration_batch",
+   "fieldtype": "Data",
+   "label": "Migration Batch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provenance_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "For a derived object (a thumbnail), the source object it was rendered from. PLAN.md §A: derived data is associated with its source, never orphaned from it.",
+   "fieldname": "derived_of",
+   "fieldtype": "Link",
+   "label": "Derived Of",
+   "options": "Cloud Storage Object",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "description": "The thumbnail suffix core appends to the file name (\"small\" in foo_small.png).",
+   "fieldname": "derived_suffix",
+   "fieldtype": "Data",
+   "label": "Derived Suffix",
+   "length": 64,
+   "read_only": 1
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Storage Object",
+ "naming_rule": "",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

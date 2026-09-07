@@ -1,0 +1,17 @@
+{
+  "campaign": "CFS-CAMP-0004",
+  "objects": 100020,
+  "batches": 100,
+  "convergence_ratio": 0.9984494883311493,
+  "convergence_target": 0.999,
+  "convergence_pass": false,
+  "quarantined": 0,
+  "delete_before_verify": 0,
+  "delete_before_verify_pass": true,
+  "counts": {
+    "Conflict": 116,
+    "Failed": 39,
+    "Skipped": 53,
+    "Verified": 99812
+  }
+}

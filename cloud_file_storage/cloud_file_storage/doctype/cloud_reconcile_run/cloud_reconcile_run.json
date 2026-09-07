@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:CFS-RECON-{####}",
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "run_section",
+  "status",
+  "bucket",
+  "prefix",
+  "continuation_token",
+  "run_column_break",
+  "started_at",
+  "completed_at",
+  "report_file",
+  "last_error",
+  "counters_section",
+  "remote_objects",
+  "cso_rows",
+  "orphan_remote",
+  "counters_column_break",
+  "missing_remote",
+  "size_mismatch",
+  "unreferenced_cso"
+ ],
+ "fields": [
+  {
+   "fieldname": "run_section",
+   "fieldtype": "Section Break",
+   "label": "Run"
+  },
+  {
+   "default": "Running",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Running\nCompleted\nFailed",
+   "search_index": 1
+  },
+  {
+   "fieldname": "bucket",
+   "fieldtype": "Data",
+   "label": "Bucket"
+  },
+  {
+   "fieldname": "prefix",
+   "fieldtype": "Data",
+   "label": "Prefix"
+  },
+  {
+   "fieldname": "continuation_token",
+   "fieldtype": "Small Text",
+   "label": "Continuation Token",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At"
+  },
+  {
+   "fieldname": "report_file",
+   "fieldtype": "Attach",
+   "label": "Report File"
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error"
+  },
+  {
+   "fieldname": "counters_section",
+   "fieldtype": "Section Break",
+   "label": "Counters"
+  },
+  {
+   "default": "0",
+   "fieldname": "remote_objects",
+   "fieldtype": "Int",
+   "label": "Remote Objects"
+  },
+  {
+   "default": "0",
+   "fieldname": "cso_rows",
+   "fieldtype": "Int",
+   "label": "Cso Rows"
+  },
+  {
+   "default": "0",
+   "fieldname": "orphan_remote",
+   "fieldtype": "Int",
+   "label": "Orphan Remote"
+  },
+  {
+   "fieldname": "counters_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "missing_remote",
+   "fieldtype": "Int",
+   "label": "Missing Remote"
+  },
+  {
+   "default": "0",
+   "fieldname": "size_mismatch",
+   "fieldtype": "Int",
+   "label": "Size Mismatch"
+  },
+  {
+   "default": "0",
+   "fieldname": "unreferenced_cso",
+   "fieldtype": "Int",
+   "label": "Unreferenced Cso"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Reconcile Run",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

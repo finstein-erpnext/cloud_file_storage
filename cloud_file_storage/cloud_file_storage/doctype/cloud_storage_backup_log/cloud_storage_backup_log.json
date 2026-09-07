@@ -1,0 +1,191 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:CB-{YYYY}-{#####}",
+ "creation": "2026-08-16 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "run_section",
+  "status",
+  "trigger",
+  "frequency",
+  "run_column_break",
+  "started_at",
+  "ended_at",
+  "total_bytes",
+  "artifacts_section",
+  "db_key",
+  "config_key",
+  "public_files_key",
+  "artifacts_column_break",
+  "private_files_key",
+  "backup_bucket",
+  "frappe_backup_path",
+  "verification_section",
+  "sha256_manifest",
+  "error"
+ ],
+ "fields": [
+  {
+   "fieldname": "run_section",
+   "fieldtype": "Section Break",
+   "label": "Run"
+  },
+  {
+   "default": "Running",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Running\nSuccess\nFailed",
+   "search_index": 1
+  },
+  {
+   "default": "scheduled",
+   "fieldname": "trigger",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Trigger",
+   "options": "scheduled\nmanual"
+  },
+  {
+   "default": "",
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "label": "Frequency",
+   "options": "\nHourly\nEvery 6 Hours\nDaily\nWeekly"
+  },
+  {
+   "fieldname": "run_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Started At",
+   "search_index": 1
+  },
+  {
+   "fieldname": "ended_at",
+   "fieldtype": "Datetime",
+   "label": "Ended At"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_bytes",
+   "fieldtype": "Long Int",
+   "label": "Total Bytes"
+  },
+  {
+   "fieldname": "artifacts_section",
+   "fieldtype": "Section Break",
+   "label": "Artifacts"
+  },
+  {
+   "fieldname": "db_key",
+   "fieldtype": "Data",
+   "label": "Database Key",
+   "length": 500,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "config_key",
+   "fieldtype": "Data",
+   "label": "Site Config Key",
+   "length": 500,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "public_files_key",
+   "fieldtype": "Data",
+   "label": "Public Files Key",
+   "length": 500,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "artifacts_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "private_files_key",
+   "fieldtype": "Data",
+   "label": "Private Files Key",
+   "length": 500,
+   "permlevel": 1
+  },
+  {
+   "fieldname": "backup_bucket",
+   "fieldtype": "Data",
+   "label": "Backup Bucket",
+   "permlevel": 1
+  },
+  {
+   "description": "Where the artifacts were written locally. Kept on the site even when the upload failed.",
+   "fieldname": "frappe_backup_path",
+   "fieldtype": "Data",
+   "label": "Local Backup Path",
+   "length": 500
+  },
+  {
+   "fieldname": "verification_section",
+   "fieldtype": "Section Break",
+   "label": "Verification"
+  },
+  {
+   "description": "SHA256 of every artifact, as computed locally and confirmed against the remote object. The restore runbook checks a downloaded artifact against this before bench restore.",
+   "fieldname": "sha256_manifest",
+   "fieldtype": "Code",
+   "label": "SHA256 Manifest",
+   "options": "JSON",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Small Text",
+   "label": "Error"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Storage Backup Log",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}
