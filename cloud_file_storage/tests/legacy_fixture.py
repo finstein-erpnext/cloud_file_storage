@@ -77,6 +77,24 @@ LEGACY_SEEDED_IGNORED_ROW = "Data Import"
 UNSEEDED_IGNORED_ROW_CANDIDATES = ("Blog Post", "Web Page", "Note", "ToDo")
 
 
+def unseeded_ignored_row() -> str:
+	"""The single DocType both the fixture and the L-12 class use as the fork's extra row.
+
+	One resolver, deliberately: two probes with different rules can resolve to different
+	names, and the cleanup that deletes only one of them then leaks the other into
+	`ignored_doctypes` -- which is exactly what broke
+	`test_the_seeded_defaults_are_still_in_place` when this was first made version-aware.
+	Deterministic (first candidate that exists), so every caller agrees.
+	"""
+	for name in UNSEEDED_IGNORED_ROW_CANDIDATES:
+		if frappe.db.exists("DocType", name):
+			return name
+	raise AssertionError(
+		f"none of {UNSEEDED_IGNORED_ROW_CANDIDATES} exists on this site, so no fork row can "
+		"be adopted and the L-12 premise cannot be armed"
+	)
+
+
 def legacy_ignored_rows() -> tuple[str, ...]:
 	"""The fork's ignored-doctype list, valid on whichever frappe is installed.
 
@@ -84,13 +102,7 @@ def legacy_ignored_rows() -> tuple[str, ...]:
 	that it is one this app does not seed itself, so a fixture that quietly dropped it would
 	make every adoption assertion pass without distinguishing adoption from seeding.
 	"""
-	for name in UNSEEDED_IGNORED_ROW_CANDIDATES:
-		if frappe.db.exists("DocType", name):
-			return (LEGACY_SEEDED_IGNORED_ROW, name)
-	raise AssertionError(
-		f"none of {UNSEEDED_IGNORED_ROW_CANDIDATES} exists on this site, so the legacy fixture "
-		"cannot supply an ignored row this app does not already seed"
-	)
+	return (LEGACY_SEEDED_IGNORED_ROW, unseeded_ignored_row())
 
 #: The fork's key shape: `{folder_name}/{YYYY}/{MM}/{DD}/{doctype}/{rand}_{filename}`.
 NEW_GEN_KEY = "attachments/2021/07/14/Sales Invoice/2f9a1c_invoice.txt"
