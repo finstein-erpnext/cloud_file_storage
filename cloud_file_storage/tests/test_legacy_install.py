@@ -37,6 +37,33 @@ PATCHES_TXT = "cloud_file_storage/patches.txt"
 SETTINGS_DOCTYPE = legacy_install.SETTINGS_DOCTYPE
 
 
+def tearDownModule():
+	"""Restore `ignored_doctypes` to the seeded defaults before any other module runs.
+
+	This module is the only one that adopts the legacy fork's ignored list, and adoption
+	writes rows into the *real* settings Single. A row left behind does not fail anything
+	here -- it fails `test_storage_health.test_the_seeded_defaults_are_still_in_place`, in a
+	different module, which is the sort of failure that gets blamed on the module that
+	reports it rather than the one that caused it.
+
+	Per-class cleanup already exists and is kept; this is the backstop that does not depend
+	on which class ran, in what order, or whether an assertion aborted before its cleanup.
+	Only the fork-adoption candidates are removed -- the seeded defaults are never touched,
+	so a genuine regression in those still fails the guard it is meant to fail.
+	"""
+	from cloud_file_storage.tests.legacy_fixture import UNSEEDED_IGNORED_ROW_CANDIDATES
+
+	frappe.db.delete(
+		"Cloud Storage Ignored DocType",
+		{
+			"parent": SETTINGS_DOCTYPE,
+			"doctype_name": ("in", list(UNSEEDED_IGNORED_ROW_CANDIDATES)),
+		},
+	)
+	frappe.db.commit()
+	frappe.clear_document_cache(SETTINGS_DOCTYPE, SETTINGS_DOCTYPE)
+
+
 class TestTheGuardIsClosedOnANormalSite(CloudStorageTestCase):
 	"""This site has never been a legacy install, so every probe must say so — and be able
 	to say otherwise, which is the half that makes the first half mean anything."""
@@ -617,41 +644,29 @@ class TestFinishIsTheSecondSave(CloudStorageTestCase):
 		remove_encrypted_password(SETTINGS_DOCTYPE, SETTINGS_DOCTYPE, "secret_access_key")
 
 	def _pick_fork_ignored_row(self) -> str:
-		"""A DocType this site has that the settings do not already ignore.
+		"""The fork's extra ignored row, resolved by the fixture's single resolver.
 
-		Probed, not named: the product guards on `frappe.db.exists("DocType", ...)`, so the
-		only row that can arm the second save is one core still ships. It raises rather than
-		skips -- a silently unarmed L-12 test is the exact failure mode this class exists to
-		prevent, and a skip would hide it as effectively as the wrong constant did.
+		Shared rather than probed again here: when this class and the fixture each ran their
+		own probe they could pick different DocTypes, and `_drop_fork_ignored_row` -- which
+		deletes one name -- then left the other behind in `ignored_doctypes`, failing
+		`test_storage_health.test_the_seeded_defaults_are_still_in_place` on the next module.
 		"""
-		seeded = {
-			row.doctype_name for row in (frappe.get_single(SETTINGS_DOCTYPE).ignored_doctypes or [])
-		}
-		for name in self.FORK_IGNORED_ROW_CANDIDATES:
-			if name not in seeded and frappe.db.exists("DocType", name):
-				return name
-		raise AssertionError(
-			f"none of {self.FORK_IGNORED_ROW_CANDIDATES} is an adoptable DocType on this site, "
-			"so this class cannot arm the second save it is named for"
-		)
-		frappe.db.set_single_value(
-			SETTINGS_DOCTYPE,
-			{"access_key_id": "", "secret_access_key": "", "use_default_credential_chain": 1},
-			update_modified=False,
-		)
-		frappe.db.commit()
+		from cloud_file_storage.tests.legacy_fixture import unseeded_ignored_row
 
-		# The row must be ABSENT for the second save to happen, and `restore_settings` does not
-		# reach the child table — so it is removed here and again on the way out rather than
-		# asserted away. A previous run of this class would otherwise disarm it.
-		self._drop_fork_ignored_row()
-		self.addCleanup(frappe.db.commit)
-		self.addCleanup(self._drop_fork_ignored_row)
+		return unseeded_ignored_row()
 
 	def _drop_fork_ignored_row(self):
+		# Every candidate, not just the one this instance picked: none of them is a seeded
+		# default, so deleting them all is idempotent, and it cannot leave a row behind if a
+		# different candidate was ever adopted by another path.
+		from cloud_file_storage.tests.legacy_fixture import UNSEEDED_IGNORED_ROW_CANDIDATES
+
 		frappe.db.delete(
 			"Cloud Storage Ignored DocType",
-			{"parent": SETTINGS_DOCTYPE, "doctype_name": self.FORK_IGNORED_ROW},
+			{
+				"parent": SETTINGS_DOCTYPE,
+				"doctype_name": ("in", list(UNSEEDED_IGNORED_ROW_CANDIDATES)),
+			},
 		)
 		frappe.db.commit()
 		frappe.clear_document_cache(SETTINGS_DOCTYPE, SETTINGS_DOCTYPE)
