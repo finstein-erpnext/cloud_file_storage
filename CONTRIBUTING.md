@@ -51,7 +51,7 @@ both — so a bench is per version line, and so is the CI matrix (`.github/workf
 ```bash
 bench init --frappe-branch version-15 --python python3.11 frappe-bench-15
 cd frappe-bench-15
-bench get-app https://github.com/RamachandranMD/cloud_file_storage --branch version-15
+bench get-app https://github.com/finstein-erpnext/cloud_file_storage --branch version-15
 bench new-site cfs.localhost
 bench --site cfs.localhost install-app cloud_file_storage
 bench --site cfs.localhost set-config allow_tests true
@@ -62,7 +62,7 @@ bench --site cfs.localhost set-config allow_tests true
 ```bash
 bench init --frappe-branch version-16 --python python3.14 frappe-bench-16
 cd frappe-bench-16
-bench get-app https://github.com/RamachandranMD/cloud_file_storage --branch version-16
+bench get-app https://github.com/finstein-erpnext/cloud_file_storage --branch version-16
 bench new-site cfs.localhost
 bench --site cfs.localhost install-app cloud_file_storage
 bench --site cfs.localhost set-config allow_tests true

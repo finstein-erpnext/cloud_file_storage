@@ -1,6 +1,8 @@
 """`CloudFile(File)` — the read side of cloud storage.
 
-Registered through `override_doctype_class`. Every signature is identical to v15.93 core
+Registered through `extend_doctype_class` on frappe v16 (composed into the MRO as
+`ExtendedFile -> CloudFile -> File`) and through `override_doctype_class` on v15, which
+has no extension hook. The class is identical either way. Every signature is identical to v15.93 core
 except `get_content`, which gains an optional keyword (the v16/develop superset).
 
 The load-bearing piece is :meth:`CloudFile._resolve_cso` (A1). Cloud resolution must NOT

@@ -14,14 +14,14 @@ body:
            `file_url` only, no `ACL` key in any S3 call, physical deletes only in deferred GC,
            raw SQL only at the three sanctioned sites. A request that requires breaking one of
            these will be declined regardless of its merit. They are listed in
-           [docs/INVARIANTS.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/docs/INVARIANTS.md).
+           [docs/INVARIANTS.md](https://github.com/finstein-erpnext/cloud_file_storage/blob/develop/docs/INVARIANTS.md).
         3. Some things are already decided and recorded rather than open: the `s3_key_generator`
            hook is not honoured (keys are content-addressed and are the object's identity),
            object ACLs are gone for good, and per-object `public-read` will not come back.
            `README.md` and `docs/source-comparison.md` carry the reasoning.
         4. Features land on `develop`. They are backported to a maintenance line only if they
            apply cleanly — see
-           [docs/BRANCHING.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/docs/BRANCHING.md).
+           [docs/BRANCHING.md](https://github.com/finstein-erpnext/cloud_file_storage/blob/develop/docs/BRANCHING.md).
 
   - type: textarea
     id: problem
@@ -74,7 +74,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow the [Code of Conduct](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/CODE_OF_CONDUCT.md).
+      description: By submitting this issue, you agree to follow the [Code of Conduct](https://github.com/finstein-erpnext/cloud_file_storage/blob/develop/CODE_OF_CONDUCT.md).
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true

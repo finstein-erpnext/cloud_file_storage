@@ -230,7 +230,7 @@ run_mutation "repair ignores the materialization lock" "$EVI" \
 	's = s.replace(chr(9)*3 + "with _StrongFileLock(probe_lock_path(f" + chr(34) + "cfs_mat_{owner}" + chr(34) + "), timeout=LOCK_PROBE_TIMEOUT):" + chr(10) + chr(9)*4 + "outcome = _repair_one(path, name, digest_path, write_sidecar)", chr(9)*3 + "outcome = _repair_one(path, name, digest_path, write_sidecar)")' "$C"
 
 echo
-echo "=== shipped schema (docs/INVARIANTS.md invariant 10) =================================="
+echo "=== shipped schema (INVARIANTS.md invariant 10) =================================="
 run_mutation "a shipped default drifts (hot_retention_days 14 -> 21)" "$BSJ" \
 	's = s.replace(chr(34) + "default" + chr(34) + ": " + chr(34) + "14" + chr(34), chr(34) + "default" + chr(34) + ": " + chr(34) + "21" + chr(34))' "$L"
 run_mutation "a Select loses its default and its leading newline" "$BLJ" \

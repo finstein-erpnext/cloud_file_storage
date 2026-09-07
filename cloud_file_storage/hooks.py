@@ -1,5 +1,22 @@
 from . import __version__ as app_version
 
+
+def _supports_extend_doctype_class() -> bool:
+	"""Does this frappe compose extension classes rather than replace the controller?
+
+	Probed from the framework rather than keyed to a version number: the hook is read in
+	`frappe.model.base_document._get_extended_class`, which exists from v16. A frappe that
+	does not read the hook would silently ignore it, and the read side would vanish -- so the
+	fallback is the override, never nothing.
+	"""
+	try:
+		from frappe.model import base_document
+	except Exception:  # noqa: BLE001 - no frappe at import time is not an error here
+		return False
+
+	return hasattr(base_document, "_get_extended_class")
+
+
 app_name = "cloud_file_storage"
 app_title = "Cloud File Storage"
 app_publisher = "Finstein"
@@ -15,11 +32,26 @@ app_license = "MIT"
 after_install = "cloud_file_storage.install.after_install"
 after_migrate = "cloud_file_storage.install.after_migrate"
 
-# The read side. `override_doctype_class` is last-wins (base_document.py:91), so this app
-# and another File-storage app cannot coexist — install.py checks and fails loudly.
-override_doctype_class = {  # nosemgrep: override-doctype-class
-	"File": "cloud_file_storage.overrides.file.CloudFile"
-}
+# The read side. `CloudFile` subclasses core `File` and is attached by whichever mechanism the
+# running frappe offers:
+#
+# * **v16+** exposes `extend_doctype_class`, which composes
+#   `type("ExtendedFile", (*extensions, File))` (base_document.py:_get_extended_class). Because
+#   `CloudFile` already derives from `File`, the MRO linearises as
+#   `ExtendedFile -> CloudFile -> File`, so the same class works unmodified -- and several apps
+#   can extend `File` at once instead of the last one silently winning.
+# * **v15** has no such hook, so `override_doctype_class` is the only option there. It is
+#   last-wins (base_document.py:91), which is why `install.py` refuses to install alongside
+#   another File-storage app and says so loudly.
+#
+# Chosen at import time rather than declared twice: declaring both would make v16 apply the
+# override *and* the extension.
+_EXTENSION = {"File": "cloud_file_storage.overrides.file.CloudFile"}
+
+if _supports_extend_doctype_class():
+	extend_doctype_class = _EXTENSION
+else:
+	override_doctype_class = _EXTENSION  # nosemgrep: override-doctype-class
 
 # The three File-lifecycle seams v15 exposes (file.py:711-714, :743-747). `write_file` and
 # `delete_file_data_content` are single-owner hooks: `get_hook_method` takes index [0].
@@ -53,6 +85,20 @@ after_job = ["cloud_file_storage.cache.writeback.flush_job"]
 # Keeps every `/api/method/frappe_s3_attachment.controller.generate_file?...` URL that
 # 0.2.x wrote into `tabFile.file_url` (and into business fields, emails and bookmarks)
 # resolving after the rename — see docs/adr/amendments-register.md A10.
+# Keeps URLs already in the wild working for a site adopted from the `frappe_s3_attachment`
+# 0.2.x fork (amendments register A10). Without it, every attachment link a user has already
+# bookmarked, emailed or embedded returns 404 the moment the fork is replaced.
+#
+# Signature compatibility, reviewed rather than assumed -- the fork declares
+# `generate_file(key: str | None = None, file_name: str | None = None)`
+# (frappe_s3_attachment/controller.py:266) and the replacement declares the identical
+# parameters (api/compat.py:43). The replacement is *stricter* than the original: it resolves
+# the File row first and runs its read permission gate before any URL is issued, refuses
+# guests, keeps every refusal indistinguishable so the endpoint is not an existence oracle,
+# and writes exactly one access-log row. Behaviour is covered by tests/test_compat.py and
+# contract/test_file_compat_contract.py.
+#
+# Inert on a site that never ran the fork: nothing calls the path.
 override_whitelisted_methods = {
 	"frappe_s3_attachment.controller.generate_file": "cloud_file_storage.api.compat.legacy_generate_file",
 }
