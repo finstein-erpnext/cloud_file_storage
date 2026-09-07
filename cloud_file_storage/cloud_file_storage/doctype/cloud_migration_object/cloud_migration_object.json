@@ -1,0 +1,371 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "identity_section",
+  "campaign",
+  "batch",
+  "url_hash",
+  "identity_kind",
+  "identity_column_break",
+  "file_url",
+  "classification",
+  "status",
+  "dup_filename",
+  "refs_section",
+  "ref_count",
+  "ignored_ref_count",
+  "primary_file",
+  "refs_column_break",
+  "is_private",
+  "privacy_mismatch",
+  "is_thumbnail",
+  "parent_object",
+  "disk_section",
+  "disk_path",
+  "on_disk",
+  "disk_size",
+  "disk_column_break",
+  "disk_mtime",
+  "thumbnail_disk_path",
+  "quarantine_path",
+  "content_section",
+  "db_content_hash",
+  "sha256",
+  "md5",
+  "content_column_break",
+  "size_bytes",
+  "cloud_storage_object",
+  "execution_section",
+  "attempt_count",
+  "next_retry_at",
+  "error_class",
+  "last_error",
+  "skip_reason",
+  "execution_column_break",
+  "uploaded_at",
+  "verified_at",
+  "cleaned_at",
+  "conflict",
+  "legacy_section",
+  "legacy_bucket",
+  "legacy_column_break",
+  "legacy_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "identity_section",
+   "fieldtype": "Section Break",
+   "label": "Identity"
+  },
+  {
+   "fieldname": "campaign",
+   "fieldtype": "Link",
+   "label": "Campaign",
+   "options": "Cloud Migration Campaign",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Cloud Migration Batch"
+  },
+  {
+   "description": "A33 \u2014 sha1 of the identity key. The object name is sha1(campaign||url_hash).",
+   "fieldname": "url_hash",
+   "fieldtype": "Data",
+   "label": "Url Hash",
+   "length": 40,
+   "reqd": 1
+  },
+  {
+   "fieldname": "identity_kind",
+   "fieldtype": "Select",
+   "label": "Identity Kind",
+   "options": "\nlocal_public\nlocal_private\nlegacy_fork_key\nremote_https\norphan_disk"
+  },
+  {
+   "fieldname": "identity_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "File Url"
+  },
+  {
+   "fieldname": "classification",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Classification",
+   "options": "\nhealthy_unique\nshared_url\nshared_content\nconflicting_url\nmissing_physical\norphan_physical\nremote_url\nlegacy_fork\ncorrupt_metadata"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nUploading\nUploaded\nVerifying\nVerified\nDedupReused\nCleanupEligible\nQuarantined\nCleanedUp\nAdopted\nFailed\nConflict\nSkipped"
+  },
+  {
+   "default": "0",
+   "fieldname": "dup_filename",
+   "fieldtype": "Check",
+   "label": "Dup Filename"
+  },
+  {
+   "fieldname": "refs_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "default": "0",
+   "fieldname": "ref_count",
+   "fieldtype": "Int",
+   "label": "Ref Count"
+  },
+  {
+   "default": "0",
+   "description": "A17 \u2014 refs whose parent doctype is LOCAL_OPERATIONAL. CLEANUP hard-refuses any object with a non-zero count.",
+   "fieldname": "ignored_ref_count",
+   "fieldtype": "Int",
+   "label": "Ignored Ref Count"
+  },
+  {
+   "fieldname": "primary_file",
+   "fieldtype": "Link",
+   "label": "Primary File",
+   "options": "File"
+  },
+  {
+   "fieldname": "refs_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_private",
+   "fieldtype": "Check",
+   "label": "Is Private"
+  },
+  {
+   "default": "0",
+   "description": "A19 \u2014 the is_private column disagrees with the URL prefix. Blocker.",
+   "fieldname": "privacy_mismatch",
+   "fieldtype": "Check",
+   "label": "Privacy Mismatch"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_thumbnail",
+   "fieldtype": "Check",
+   "label": "Is Thumbnail"
+  },
+  {
+   "fieldname": "parent_object",
+   "fieldtype": "Link",
+   "label": "Parent Object",
+   "options": "Cloud Migration Object"
+  },
+  {
+   "fieldname": "disk_section",
+   "fieldtype": "Section Break",
+   "label": "Local Copy"
+  },
+  {
+   "fieldname": "disk_path",
+   "fieldtype": "Small Text",
+   "label": "Disk Path"
+  },
+  {
+   "default": "0",
+   "fieldname": "on_disk",
+   "fieldtype": "Check",
+   "label": "On Disk"
+  },
+  {
+   "default": "0",
+   "fieldname": "disk_size",
+   "fieldtype": "Long Int",
+   "label": "Disk Size"
+  },
+  {
+   "fieldname": "disk_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "disk_mtime",
+   "fieldtype": "Datetime",
+   "label": "Disk Mtime"
+  },
+  {
+   "fieldname": "thumbnail_disk_path",
+   "fieldtype": "Small Text",
+   "label": "Thumbnail Disk Path"
+  },
+  {
+   "fieldname": "quarantine_path",
+   "fieldtype": "Small Text",
+   "label": "Quarantine Path",
+   "read_only": 1
+  },
+  {
+   "fieldname": "content_section",
+   "fieldtype": "Section Break",
+   "label": "Content"
+  },
+  {
+   "description": "Consensus MD5 from the File rows; NULL when they disagree.",
+   "fieldname": "db_content_hash",
+   "fieldtype": "Data",
+   "label": "Db Content Hash",
+   "length": 32
+  },
+  {
+   "fieldname": "sha256",
+   "fieldtype": "Data",
+   "label": "Sha256",
+   "length": 64
+  },
+  {
+   "fieldname": "md5",
+   "fieldtype": "Data",
+   "label": "Md5",
+   "length": 32
+  },
+  {
+   "fieldname": "content_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "size_bytes",
+   "fieldtype": "Long Int",
+   "label": "Size Bytes"
+  },
+  {
+   "description": "A14 \u2014 a link held by a non-terminal campaign counts as a live reference in GC.",
+   "fieldname": "cloud_storage_object",
+   "fieldtype": "Link",
+   "label": "Cloud Storage Object",
+   "options": "Cloud Storage Object",
+   "search_index": 1
+  },
+  {
+   "fieldname": "execution_section",
+   "fieldtype": "Section Break",
+   "label": "Execution"
+  },
+  {
+   "default": "0",
+   "fieldname": "attempt_count",
+   "fieldtype": "Int",
+   "label": "Attempt Count"
+  },
+  {
+   "fieldname": "next_retry_at",
+   "fieldtype": "Datetime",
+   "label": "Next Retry At"
+  },
+  {
+   "fieldname": "error_class",
+   "fieldtype": "Data",
+   "label": "Error Class"
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error"
+  },
+  {
+   "fieldname": "skip_reason",
+   "fieldtype": "Data",
+   "label": "Skip Reason"
+  },
+  {
+   "fieldname": "execution_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uploaded_at",
+   "fieldtype": "Datetime",
+   "label": "Uploaded At"
+  },
+  {
+   "fieldname": "verified_at",
+   "fieldtype": "Datetime",
+   "label": "Verified At"
+  },
+  {
+   "fieldname": "cleaned_at",
+   "fieldtype": "Datetime",
+   "label": "Cleaned At"
+  },
+  {
+   "fieldname": "conflict",
+   "fieldtype": "Link",
+   "label": "Conflict",
+   "options": "Cloud Migration Conflict"
+  },
+  {
+   "fieldname": "legacy_section",
+   "fieldtype": "Section Break",
+   "label": "Legacy Location"
+  },
+  {
+   "fieldname": "legacy_bucket",
+   "fieldtype": "Data",
+   "label": "Legacy Bucket"
+  },
+  {
+   "fieldname": "legacy_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "legacy_key",
+   "fieldtype": "Small Text",
+   "label": "Legacy Key"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Migration Object",
+ "naming_rule": "",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

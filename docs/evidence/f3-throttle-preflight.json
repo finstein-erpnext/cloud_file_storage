@@ -1,0 +1,35 @@
+{
+  "site": "cfs-thr4.local",
+  "checks": {
+    "CREDENTIALS_VALID": "YES",
+    "BUCKET_EXISTS": "YES",
+    "BUCKET_PREFIX_EMPTY_OR_UNIQUE": "YES",
+    "ACTIVE_CAMPAIGNS": "0",
+    "STARTING_OBJECT_STATE_VALID": "YES",
+    "WORKERS_HEALTHY": "YES"
+  },
+  "notes": {
+    "credentials": "access_key_id set=True; secret via get_password set=True",
+    "bucket": "cfs-thr-remeasure-20260819g",
+    "key_prefix": "<none: whole bucket>",
+    "bucket_keycount": 0,
+    "campaigns": [
+      {
+        "name": "CFS-CAMP-0009",
+        "status": "Planned"
+      }
+    ],
+    "batches_past_pending": 0,
+    "batches_pending": 3,
+    "residual_cso": 0,
+    "object_status": {
+      "Skipped": 20,
+      "Pending": 240
+    },
+    "campaign_count": 1,
+    "worker_processes": "none",
+    "breaker_open": false
+  },
+  "PREFLIGHT": "PASS",
+  "at": "2026-08-19 12:10:51.068275"
+}

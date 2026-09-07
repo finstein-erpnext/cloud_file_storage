@@ -1,0 +1,3784 @@
+# German translations for Cloud File Storage.
+# Copyright (C) 2026 Finstein
+# This file is distributed under the same license as the Cloud File Storage project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cloud File Storage VERSION\n"
+"Report-Msgid-Bugs-To: prabakaran.b@finstein.ai\n"
+"POT-Creation-Date: 2026-08-16 10:08+0553\n"
+"PO-Revision-Date: 2026-08-14 23:18+0553\n"
+"Last-Translator: prabakaran.b@finstein.ai\n"
+"Language: de\n"
+"Language-Team: prabakaran.b@finstein.ai\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: cloud_file_storage/backup/lifecycle.py:119
+#: cloud_file_storage/backup/restore.py:176
+msgid "(empty)"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:36
+msgid "(no id)"
+msgstr ""
+
+#. Description of the 'Bandwidth Limit Mbps' (Int) field in DocType 'Cloud
+#. Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "0 = unthrottled."
+msgstr ""
+
+#. Description of the 'Migration Bandwidth Limit (Mbps)' (Int) field in DocType
+#. 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "0 disables the bandwidth cap."
+msgstr ""
+
+#. Description of the 'Addressing Style' (Select) field in DocType 'Cloud
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "<b>auto</b> uses path-style addressing whenever an endpoint URL is set (most reliable for S3-compatible providers)."
+msgstr ""
+
+#. Header text in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "<span class=\"h4\"><b>Operate</b></span>"
+msgstr ""
+
+#. Header text in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "<span class=\"h4\"><b>Records</b></span>"
+msgstr ""
+
+#. Header text in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "<span class=\"h4\"><b>Storage Health</b></span>"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:91
+msgid "A campaign in state {0} cannot be deleted — it still owns migration work."
+msgstr ""
+
+#. Description of the 'Verify Strategy Cutover Mb' (Int) field in DocType
+#. 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "A12 — must be <= multipart_threshold_mb. Below it VERIFY compares the HEAD checksum; at or above it re-GETs and re-hashes."
+msgstr ""
+
+#. Description of the 'Cloud Storage Object' (Link) field in DocType 'Cloud
+#. Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "A14 — a link held by a non-terminal campaign counts as a live reference in GC."
+msgstr ""
+
+#. Description of the 'Ignored Ref Count' (Int) field in DocType 'Cloud
+#. Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "A17 — refs whose parent doctype is LOCAL_OPERATIONAL. CLEANUP hard-refuses any object with a non-zero count."
+msgstr ""
+
+#. Description of the 'Ignored Parent' (Check) field in DocType 'Cloud
+#. Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "A17 — the parent doctype is LOCAL_OPERATIONAL (Data Import / Prepared Report / Package Import)."
+msgstr ""
+
+#. Description of the 'Adopt Remote Https Rows' (Check) field in DocType 'Cloud
+#. Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "A18 — ON for remote URLs whose host/bucket matches the configured bucket. Others stay Skipped."
+msgstr ""
+
+#. Description of the 'Privacy Mismatch' (Check) field in DocType 'Cloud
+#. Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "A19 — the is_private column disagrees with the URL prefix. Blocker."
+msgstr ""
+
+#. Description of the 'Url Hash' (Data) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "A33 — sha1 of the identity key. The object name is sha1(campaign||url_hash)."
+msgstr ""
+
+#. Description of the 'Status' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "A9 — frozen campaign state machine. Changed only through migration/api.py."
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Abort Incomplete Multipart After Days"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#. Label of a Data field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:59
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:52
+msgid "Access Key ID"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "Action"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:29
+msgid "Actions"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Active Phase"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "Actor"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Addressing Style"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Adopt Legacy Fork Rows"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Adopt Remote Https Rows"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:166
+msgid "Adopted"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "Alias"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.py:33
+msgid "An alias cannot point a URL at itself."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.py:40
+msgid "An alias must point at a canonical /files/ or /private/files/ URL, not {0}."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.py:30
+msgid "An alias needs both an old and a new URL."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:168
+msgid "Analyze"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:14
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:86
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:152
+msgid "Analyze Storage"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:124
+msgid "Analyze Storage first — that is what creates the campaign these act on."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Analyzed"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Analyzing"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:88
+msgid "Apply"
+msgstr ""
+
+#. Label of a Button field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:7
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:85
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Apply Lifecycle Policy"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:80
+msgid "Applying schedules deletions on bucket {0}."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:91
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:254
+msgid "Approval note"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:120
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:276
+msgid "Approve and Start"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:97
+msgid "Archive Storage Class"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:120
+msgid "Archive Storage Class Refused"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:98
+msgid "Archive Transition Not Configurable"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Artifacts"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Attached To"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Attached To Doctype"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Attached To Field"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Attached To Name"
+msgstr ""
+
+#. Description of the 'Restore Window (Days)' (Int) field in DocType 'Cloud
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Attachment recovery window. Must be less than or equal to the object delete grace period, backed by bucket versioning."
+msgstr ""
+
+#. Description of the 'Ignored DocTypes' (Table) field in DocType 'Cloud
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Attachments of these parent DocTypes stay on local disk (operational, short-lived bytes)."
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Attempt Count"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Attempts"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "Audit"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Audit Public Fallback"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.py:33
+msgid "Audit log rows are append-only."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:420
+#: cloud_file_storage/health.py:398
+msgid "Backup"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#. Label of a Data field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:37
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Backup Bucket"
+msgstr ""
+
+#: cloud_file_storage/backup/settings.py:94
+msgid "Backup Bucket Not Isolated"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:133
+msgid "Backup Bucket Unreachable"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Backup Hour"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:545
+#: cloud_file_storage/backup/tasks.py:303
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:38
+msgid "Backup Not Configured"
+msgstr ""
+
+#. Label of a Button field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:8
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Backup Now"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Backup Policy"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/backup/lifecycle.py:80
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:45
+msgid "Backup Prefix"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:84
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:46
+msgid "Backup Prefix Required"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Backup Target"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Backup Weekday"
+msgstr ""
+
+#. Description of the 'Archive Storage Class' (Select) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Backup bucket only. Leave empty to never transition to an archive class."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:25
+msgid "Backup enqueued"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:395
+msgid "Backup health is unavailable."
+msgstr ""
+
+#: cloud_file_storage/health.py:392
+msgid "Backup health is visible to System Managers only."
+msgstr ""
+
+#: cloud_file_storage/backup/tasks.py:122
+#: cloud_file_storage/backup/tasks.py:301
+msgid "Backups Disabled"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Bandwidth Limit Mbps"
+msgstr ""
+
+#. Description of the 'S3 Checksum SHA256' (Data) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Base64 SHA256 returned by S3 when the object was stored with a checksum."
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Batch'
+#. Label of a Link field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Batch"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Batch No"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:188
+msgid "Batch Size"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:60
+msgid "Batch size must be at least 1."
+msgstr ""
+
+#. Option for the 'Severity' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Blocker"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:185
+msgid "Blocker conflict(s) are open. Cleanup cannot be approved until they are resolved or skipped."
+msgstr ""
+
+#: cloud_file_storage/health.py:258
+msgid "Bounded temporary / local operational bytes"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Reconcile Run'
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#. Label of a Data field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Bucket"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Bucket Lifecycle Policy"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:141
+msgid "Bucket not reachable: {0}"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:327
+msgid "Bucket versioning covers the restore window."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:143
+msgid "Bucket {0} is reachable."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:15
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:87
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:183
+msgid "Build Migration Plan"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:193
+msgid "Build Plan"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Bytes"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Bytes Done"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Bytes Reclaimed"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Migration Batch'
+#. Label of a Long Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Bytes Total"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Bytes Uploaded"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Bytes Verified"
+msgstr ""
+
+#: cloud_file_storage/health.py:192
+msgid "Bytes of permanent attachments held in the object store and managed by this app. Excludes operational and temporary local bytes entirely."
+msgstr ""
+
+#. Description of the 'File Size' (Long Int) field in DocType 'Cloud Storage
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Bytes. Long Int: Int is int(11) on MariaDB and overflows above 2GB (A24)."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "CDN Base URL"
+msgstr ""
+
+#. Option for the 'Active Phase' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "CLASSIFY"
+msgstr ""
+
+#. Option for the 'Phase' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Active Phase' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "CLEANUP"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:433
+msgid "Cache"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Cache Max Size (MB)"
+msgstr ""
+
+#. Label of a HTML field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Cache Stats"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Cache TTL (Hours)"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Migration Batch'
+#. Label of a Section Break field in DocType 'Cloud Migration Campaign'
+#. Label of a Link field in DocType 'Cloud Migration Conflict'
+#. Label of a Link field in DocType 'Cloud Migration File Ref'
+#. Label of a Link field in DocType 'Cloud Migration Object'
+#. Label of a Link field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:47
+msgid "Campaign"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:85
+#: cloud_file_storage/migration/api.py:125
+#: cloud_file_storage/migration/api.py:612
+msgid "Campaign Already Active"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:94
+msgid "Campaign In Progress"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:157
+msgid "Campaign Title"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:94
+#: cloud_file_storage/migration/report.py:223
+msgid "Campaign {0} does not exist."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:84
+msgid "Campaign {0} is already active. Only one campaign may run at a time."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:124
+msgid "Campaign {0} is already active; only one campaign may run at a time."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:608
+msgid "Campaign {0} is still active. Reconcile compares the bucket against the object rows, and a campaign in flight makes that comparison meaningless."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:101
+msgid "Campaign {0} is {1}; this action needs it to be one of {2}."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:637
+msgid "Campaign {0} was last touched less than {1} days ago."
+msgstr ""
+
+#: cloud_file_storage/overrides/file.py:184
+msgid "Cannot get file contents of a Folder"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:132
+msgid "Cannot reach the backup bucket {0}: {1}"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:192
+msgid "Cannot read back the probe object ({0})."
+msgstr ""
+
+#: cloud_file_storage/storage/modes.py:184
+msgid "Cannot switch from S3_ONLY to {0}: the bytes are not on local disk any more. Run a reverse-materialization campaign, or set <code>flags.force_mode_downgrade</code> from the console if you know the local copies are present."
+msgstr ""
+
+#: cloud_file_storage/storage/modes.py:176
+msgid "Cannot switch to S3_ONLY while {0} migration campaign(s) are still transferring."
+msgstr ""
+
+#: cloud_file_storage/storage/modes.py:156
+msgid "Cannot switch to S3_ONLY: {0} managed File(s) do not have a verified Cloud Storage Object yet. Run a migration campaign to completion first."
+msgstr ""
+
+#: cloud_file_storage/storage/modes.py:166
+msgid "Cannot switch to S3_ONLY: {0} materialization cache entries still hold unflushed local changes."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:190
+msgid "Cannot switch to {0}: the bucket is not reachable ({1})."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:179
+msgid "Cannot write to the bucket ({0}). Attachment uploads will fail."
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Capacity Preflight (A29 / F4)"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:98
+msgid "Checked on the server, not here."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:262
+msgid "Checked on the server. Local copies are quarantined only after a fresh remote verification and a local re-stat of every object."
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Classification"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Classify Step"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:164
+msgid "Cleaned"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Cleaned At"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "CleanedUp"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Cleaning"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Cleanup Approval"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Cleanup Approval Note"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Cleanup Approved At"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Cleanup Approved By"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Cleanup Mode"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Cleanup Running"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:495
+msgid "Cleanup has not been approved for this campaign."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:500
+msgid "Cleanup is not allowed in {0}: that mode promises a local copy. Switch to S3_PRIMARY_LOCAL_FALLBACK or S3_ONLY first."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "CleanupDispatched"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "CleanupEligible"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:282
+msgid "Clocks agree to within {0}s."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:88
+msgid "Close"
+msgstr ""
+
+#. Name of a DocType
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Cloud Backup Settings"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud File URL Alias"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Migration Batch"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#. Label of a shortcut in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Migration Campaign"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#. Label of a shortcut in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Migration Conflict"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:16
+msgid "Cloud Migration Dashboard"
+msgstr ""
+
+#. Name of a DocType
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Cloud Migration File Ref"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Migration Object"
+msgstr ""
+
+#. Label of a number card in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Objects Awaiting Upload"
+msgstr ""
+
+#. Label of a number card in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Objects Failed"
+msgstr ""
+
+#. Label of a number card in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Objects Verified"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Reconcile Run"
+msgstr ""
+
+#. Name of a Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Storage"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Storage Audit Log"
+msgstr ""
+
+#. Name of a DocType
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Cloud Storage Backup Log"
+msgstr ""
+
+#. Description of the 'Log Retention Days' (Int) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Cloud Storage Backup Log rows older than this are purged weekly. 0 keeps them forever."
+msgstr ""
+
+#. Name of a DocType
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_ignored_doctype/cloud_storage_ignored_doctype.json
+msgid "Cloud Storage Ignored DocType"
+msgstr ""
+
+#. Name of a role
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Cloud Storage Manager"
+msgstr ""
+
+#: cloud_file_storage/api/compat.py:206
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:183
+#: cloud_file_storage/core_hooks.py:74
+msgid "Cloud Storage Not Configured"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Migration Object'
+#. Label of a Link field in DocType 'Cloud Storage Audit Log'
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Cloud Storage Object"
+msgstr ""
+
+#. Name of a DocType
+#. Label of a Link in the Cloud Storage Workspace
+#. Label of a shortcut in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:59
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+#: cloud_file_storage/core_hooks.py:72
+msgid "Cloud Storage Settings"
+msgstr ""
+
+#: cloud_file_storage/backup/tasks.py:301
+msgid "Cloud backups are disabled."
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:47
+msgid "Cloud backups are disabled. Nothing is being uploaded."
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:143
+msgid "Cloud backups are enabled but no backup bucket is configured."
+msgstr ""
+
+#: cloud_file_storage/health.py:191
+msgid "Cloud-managed permanent attachment bytes"
+msgstr ""
+
+#. Description of the 'CDN Base URL' (Data) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "CloudFront (or equivalent) base URL scoped to the public prefix."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Completed"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Campaign'
+#. Label of a Datetime field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Completed At"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Compress File Tarballs"
+msgstr ""
+
+#. Label of a Card Break in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Configuration"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:545
+#: cloud_file_storage/backup/tasks.py:303
+msgid "Configure a backup bucket first."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:182
+msgid "Configure a bucket before selecting {0}."
+msgstr ""
+
+#: cloud_file_storage/api/compat.py:206
+msgid "Configure a bucket first."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:557
+#: cloud_file_storage/migration/api.py:86
+msgid "Confirmation Required"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Conflict'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#. Label of a Link field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:169
+msgid "Conflict"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Conflict Type"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Connection"
+msgstr ""
+
+#. Label of a HTML field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Connection Status"
+msgstr ""
+
+#. Description of the 'Db Content Hash' (Data) field in DocType 'Cloud
+#. Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Consensus MD5 from the File rows; NULL when they disagree."
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Content"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Content Hash"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.py:53
+msgid "Content Hash (MD5)"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.py:52
+msgid "Content SHA256"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Continuation Token"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Control Flag"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Campaign'
+#. Label of a Section Break field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Counters"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Credentials"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Cso Rows"
+msgstr ""
+
+#. Option for the 'Archive Storage Class' (Select) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "DEEP_ARCHIVE"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:445
+msgid "DEEP_ARCHIVE retrieval takes 9-48 hours. A restore cannot start until the artifact is restored to STANDARD, so plan a recovery-time objective of at least two days for anything older than {0} days."
+msgstr ""
+
+#. Option for the 'Operation Mode' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "DUAL_WRITE"
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Backup Settings'
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Storage Backup
+#. Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Daily"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Database Key"
+msgstr ""
+
+#. Description of the 'Hot Retention Days' (Int) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Days an artifact stays in STANDARD. This is what drives the archive transition (amendment A20)."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Db Content Hash"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "DedupReused"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Dedupe By Content Hash"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:167
+msgid "Deduplicated"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Delete After Days"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:56
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:119
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:104
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:275
+msgid "Delete Verified Local Copies"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Deletion Scheduled At"
+msgstr ""
+
+#. Description of the 'Reference Count' (Long Int) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Denormalized for list views only. NEVER authoritative: the live count is derived from tabFile under a row lock (ADR-4)."
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Derived Of"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Derived Suffix"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Conflict'
+#. Label of a Section Break field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "Detail"
+msgstr ""
+
+#. Label of a Code field in DocType 'Cloud Migration Conflict'
+#. Label of a Code field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "Details"
+msgstr ""
+
+#. Option for the 'Cleanup Mode' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Direct Delete"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Disk Mtime"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Disk Path"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Disk Size"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Storage Ignored DocType'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_ignored_doctype/cloud_storage_ignored_doctype.json
+msgid "DocType"
+msgstr "DocType"
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:137
+msgid "Done"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Draft"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Dup Filename"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "ETag"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:63
+msgid "Economics"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Email On Success"
+msgstr ""
+
+#: cloud_file_storage/backup/tasks.py:122
+msgid "Enable Cloud Backup Settings first."
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Enabled"
+msgstr ""
+
+#. Description of the 'Visibility' (Select) field in DocType 'Cloud Storage
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Encoded in the key prefix as pub/ or prv/. Part of the dedup identity."
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Ended At"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#. Label of a Data field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:74
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:79
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:67
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:73
+msgid "Endpoint URL"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:66
+msgid "Enter a valid HTTPS URL in {0}, for example: {1}."
+msgstr "Geben Sie bitte eine gültige HTTPS-URL in {0} ein, zum Beispiel: {1}."
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:74
+msgid "Enter a valid HTTPS URL in {0}."
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Error"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Error Class"
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Backup Settings'
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Storage Backup
+#. Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Every 6 Hours"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Batch'
+#. Label of a Section Break field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Execution"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Execution Policy"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:122
+msgid "Existing Objects Will Not Follow"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:38
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:99
+msgid "Export Migration Report"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Fail Insert on S3 Error"
+msgstr ""
+
+#. Description of the 'Fail Insert on S3 Error' (Check) field in DocType 'Cloud
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Fail the File insert when the object store is unreachable instead of degrading per operation mode."
+msgstr ""
+
+#. Option for the 'Last Backup Status' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#. Option for the 'Preflight Status' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Reconcile Run'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:168
+msgid "Failed"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Fallback Queue Used"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud File URL Alias'
+#. Label of a Link field in DocType 'Cloud Migration File Ref'
+#. Label of a Link field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "File"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "File Name"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "File Size"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Migration File Ref'
+#. Label of a Small Text field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "File Url"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:337
+msgid "File rows linked"
+msgstr ""
+
+#. Description of the 'Derived Of' (Link) field in DocType 'Cloud Storage
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "For a derived object (a thumbnail), the source object it was rendered from. PLAN.md §A: derived data is associated with its source, never orphaned from it."
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Backup Settings'
+#. Label of a Select field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Frequency"
+msgstr ""
+
+#. Option for the 'Backup Weekday' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Friday"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Fs Entries Seen"
+msgstr ""
+
+#. Description of the 'S3 Key' (Data) field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Full object key. Unique: two Cloud Storage Objects can never claim one object."
+msgstr ""
+
+#. Option for the 'Archive Storage Class' (Select) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "GLACIER"
+msgstr ""
+
+#. Option for the 'Archive Storage Class' (Select) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "GLACIER_IR"
+msgstr ""
+
+#. Description of the 'Object Delete Grace (Days)' (Int) field in DocType
+#. 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Grace period before a dereferenced object is physically deleted by garbage collection. This IS the attachment recovery window (PLAN.md §H item 1), so it must be at least as long as Restore Window (Days)."
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Heartbeat At"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:97
+msgid "Hot Retention Days"
+msgstr ""
+
+#. Description of the 'Backup Hour' (Int) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Hour of day (0-23) for Daily and Weekly runs."
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Backup Settings'
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Storage Backup
+#. Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Hourly"
+msgstr ""
+
+#. Option for the 'Storage Class' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "INTELLIGENT_TIERING"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Object'
+#. Label of a Section Break field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Identity"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Identity Kind"
+msgstr ""
+
+#. Label of a Table field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:95
+msgid "Ignored DocTypes"
+msgstr "Ignorierte DocTypes"
+
+#. Label of a Check field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Ignored Parent"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Ignored Ref Count"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.py:33
+msgid "Immutable Record"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Include Private"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Include Private Files Tarball"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Include Public"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Include Public Files Tarball"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Include Site Config"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.py:30
+msgid "Incomplete Alias"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.py:60
+msgid "Incomplete Cloud Storage Object"
+msgstr ""
+
+#. Option for the 'Server-Side Encryption' (Select) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Inherit"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Inline MIME Type Prefixes"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.py:33
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.py:43
+msgid "Invalid Alias"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:104
+msgid "Invalid Campaign State"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:75
+msgid "Invalid Endpoint"
+msgstr ""
+
+#: cloud_file_storage/overrides/file.py:279
+#: cloud_file_storage/overrides/file.py:286
+msgid "Invalid File URL"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:56
+msgid "Invalid Verification Policy"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration File Ref'
+#. Label of a Check field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Is Private"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Is Thumbnail"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#. Label of a Data field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "KMS Key ID"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Key Prefix"
+msgstr ""
+
+#: cloud_file_storage/backup/restore.py:178
+#: cloud_file_storage/backup/restore.py:188
+msgid "Key Refused"
+msgstr ""
+
+#. Option for the 'Operation Mode' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "LOCAL_ONLY"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Last Backup On"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Last Backup Status"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Migration Batch'
+#. Label of a Small Text field in DocType 'Cloud Migration Campaign'
+#. Label of a Small Text field in DocType 'Cloud Migration Object'
+#. Label of a Small Text field in DocType 'Cloud Reconcile Run'
+#. Label of a Small Text field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Last Error"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:415
+msgid "Last backup"
+msgstr ""
+
+#. Description of the 'Endpoint URL' (Data) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Leave blank for AWS. For Hetzner set for example: <b>https://nbg1.your-objectstorage.com</b>. Must be HTTPS unless the site runs with <b>allow_tests</b>."
+msgstr ""
+
+#. Description of the 'Server Side Encryption' (Select) field in DocType 'Cloud
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Leave blank only when the object store encrypts at rest itself (some S3-compatible providers reject SSE headers without a KMS backend)."
+msgstr ""
+
+#. Description of the 'Access Key ID' (Data) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Leave empty to use the default credential chain."
+msgstr ""
+
+#. Description of the 'Include Private Files Tarball' (Check) field in DocType
+#. 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Leave off after the cloud cutover."
+msgstr ""
+
+#. Description of the 'Include Public Files Tarball' (Check) field in DocType
+#. 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Leave off after the cloud cutover: attachment bytes live in the object store and the links ride in the database dump."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Legacy Bucket"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Legacy Key"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Legacy Location"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Lifecycle"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Lifecycle Applied Hash"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Lifecycle Applied On"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:85
+msgid "Lifecycle Policy Preview"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:568
+msgid "Lifecycle Policy Refused"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:101
+msgid "Lifecycle policy applied"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Linked"
+msgstr ""
+
+#. Description of the 'Storage Class' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Live objects must stay synchronously retrievable. Archive classes are rejected here and belong on the backup bucket only."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Local Backup Path"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Local Cache"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Local Copy"
+msgstr ""
+
+#: cloud_file_storage/health.py:299
+msgid "Local attachment bytes not yet cloud-managed"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Location"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Log Retention Days"
+msgstr ""
+
+#. Description of the 'Content Hash (MD5)' (Data) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "MD5 of the same bytes, mirroring tabFile.content_hash so core dedup keeps working."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "MIME Type"
+msgstr ""
+
+#. Description of the 'Enabled' (Check) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Master switch. Nothing is dumped, uploaded or expired while this is off."
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Max Attempts"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:64
+msgid "Max attempts must be at least 1."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Md5"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:431
+msgid "Mean artifact size is {0} KB, below the 128 KB point where the 40 KB per-object archive overhead stops being noise: it adds about {1}% to what you store."
+msgstr ""
+
+#. Description of the 'Preflight Report' (Code) field in DocType 'Cloud
+#. Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Measured F4 quantities and the projection to production scale."
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#. Label of a HTML field in DocType 'Cloud Storage Settings'
+#. Label of a Card Break in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:84
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Migration"
+msgstr "Migration"
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Migration Bandwidth Limit (Mbps)"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Migration Batch"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Migration Batch Size"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "Migration Campaign"
+msgstr ""
+
+#. Label of a shortcut in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Migration Dashboard"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Migration Conflict'
+#. Label of a Link field in DocType 'Cloud Migration File Ref'
+#. Label of a Link field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "Migration Object"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Migration Parallelism"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:136
+msgid "Migration Progress"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:247
+msgid "Migration Queue Not Configured"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:159
+msgid "Migration {0}"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Missing Remote"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:50
+msgid "Missing remote"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:341
+msgid "Mode"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:504
+msgid "Mode Does Not Allow Cleanup"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:193
+#: cloud_file_storage/storage/modes.py:160
+#: cloud_file_storage/storage/modes.py:170
+#: cloud_file_storage/storage/modes.py:179
+#: cloud_file_storage/storage/modes.py:190
+msgid "Mode Transition Blocked"
+msgstr ""
+
+#. Option for the 'Backup Weekday' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Monday"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Multipart Chunk Size (MB)"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Multipart Threshold (MB)"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Multipart Threshold Mb"
+msgstr ""
+
+#. Description of the 'Backup Bucket' (Data) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Must not be the attachment bucket. Backup artifacts and live attachments never share a bucket — archive lifecycle rules belong on this one only."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "New URL"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Next Retry At"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:122
+msgid "No Campaign"
+msgstr ""
+
+#: cloud_file_storage/health.py:437
+msgid "No LOCAL_OPERATIONAL doctypes are configured. Data Import, Prepared Report and Package Import attachments are consumed through local paths and are expected to stay local."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:353
+msgid "No app defines the retired s3_key_generator hook."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:367
+msgid "No archive rule is generated for {0}: artifacts there expire on day {1}, before the day-{2} transition would fire. That is the cheaper outcome — archiving them would incur {3}'s {4}-day minimum."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:424
+msgid "No backup findings."
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:154
+msgid "No backup prefix is configured, so no lifecycle policy can be generated: an empty prefix would scope every rule to the whole of {0}."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:92
+msgid "No bucket is configured."
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:75
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:418
+msgid "No cloud backup has completed yet."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:63
+msgid "No findings"
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:166
+msgid "No lifecycle policy has been applied to {0}. Backup artifacts will accumulate there indefinitely."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:451
+msgid "No migration campaign yet."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:120
+msgid "No migration campaign yet. Start one from Cloud Storage Settings."
+msgstr ""
+
+#: cloud_file_storage/health.py:85
+msgid "No private-namespaced files in the public site tree."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:215
+msgid "No server-side encryption requested; the store encrypts at rest itself."
+msgstr ""
+
+#: cloud_file_storage/backup/restore.py:184
+msgid "No successful Cloud Storage Backup Log records {0}. Only artifacts this site uploaded and verified can be {1}."
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Noncurrent Version Retention Days"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:31
+msgid "None"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:495
+msgid "Not Approved"
+msgstr ""
+
+#: cloud_file_storage/api/compat.py:81
+msgid "Not Permitted"
+msgstr ""
+
+#. Option for the 'Preflight Status' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Not Run"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:177
+msgid "Not Settable At Creation"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "Note"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Notifications & Status"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Notify Email"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:130
+msgid "Numbers as of"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Object Count"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Object Delete Grace (Days)"
+msgstr ""
+
+#: cloud_file_storage/backup/retention.py:42
+msgid "Object Delete Grace Days"
+msgstr ""
+
+#: cloud_file_storage/core_hooks.py:83
+msgid "Object Storage Unavailable"
+msgstr ""
+
+#: cloud_file_storage/health.py:426
+msgid "Object delete grace ({0}d) is shorter than the restore window ({1}d): a restore inside the promised window could find the object already deleted."
+msgstr ""
+
+#: cloud_file_storage/core_hooks.py:79
+msgid "Object storage is unreachable and the operation mode is S3_ONLY, so this file cannot be stored. Retry once connectivity is restored."
+msgstr ""
+
+#. Label of a Card Break in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Objects"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Adopted"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Cleaned"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Conflict"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Dedup Reused"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Objects Done"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Batch'
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Failed"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Pending"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Skipped"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Uploaded"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Uploading"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Objects Verified"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:551
+msgid "Objects are still in flight; the campaign is not complete."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:190
+msgid "Objects per batch. 1,000 keeps the job count bounded."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "Old URL"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "On Disk"
+msgstr ""
+
+#. Description of the 'Inline MIME Type Prefixes' (Small Text) field in DocType
+#. 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "One MIME type prefix per line. HTML, SVG and XML are always served as attachments regardless of this list."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Open"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:459
+msgid "Open Blockers"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:56
+msgid "Open Conflicts"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:62
+msgid "Open Dashboard"
+msgstr ""
+
+#. Label of a number card in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "Open Migration Conflicts"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:456
+msgid "Open conflicts"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:456
+msgid "Open the migration dashboard"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Operation Mode"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Operation Mode & Serving"
+msgstr ""
+
+#: cloud_file_storage/core_hooks.py:71
+msgid "Operation mode is S3_ONLY but no bucket is configured in {0}."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:165
+msgid "Or re-analyze an existing campaign"
+msgstr ""
+
+#. Description of the 'Source Path' (Data) field in DocType 'Cloud Storage
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Original local relative path, for migration and audit provenance only."
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Orphan Remote"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:50
+msgid "Orphan remote keys"
+msgstr ""
+
+#. Option for the 'Control Flag' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "PAUSE"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Parallelism"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:62
+msgid "Parallelism must be at least 1."
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Parent Object"
+msgstr ""
+
+#. Option for the 'Preflight Status' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Passed"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:17
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:89
+msgid "Pause"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Paused"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:160
+msgid "Pending"
+msgstr ""
+
+#: cloud_file_storage/health.py:300
+msgid "Permanent attachments that no Cloud Storage Object backs yet. Reported separately so they are neither claimed as migrated nor excused as operational."
+msgstr ""
+
+#. Description of the 'Secret Access Key' (Password) field in DocType 'Cloud
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Permission level 1. Stored in the Password field type, never returned to the client and never logged."
+msgstr ""
+
+#. Description of the 'Access Key ID' (Data) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Permission level 1: only roles with a level-1 DocPerm may read or write this. Prefer the default credential chain."
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:130
+msgid "Phase"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Planned"
+msgstr ""
+
+#. Description of the 'Control Flag' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Polled per object by workers. Set by pause/stop, cleared by resume."
+msgstr ""
+
+#. Description of the 'Use Default Credential Chain' (Check) field in DocType
+#. 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Preferred. Resolve credentials through the boto3/IAM default chain instead of storing static keys."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Prefix"
+msgstr ""
+
+#. Description of the 'Key Prefix' (Data) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Prefix for every generated object key inside the bucket."
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Preflight At"
+msgstr ""
+
+#. Label of a Code field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Preflight Report"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Preflight Status"
+msgstr ""
+
+#. Label of a Button field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:6
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Preview Lifecycle Policy"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Primary File"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Privacy Mismatch"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Private Files Key"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Private Presign TTL"
+msgstr ""
+
+#. Description of the 'Test Connection' (Button) field in DocType 'Cloud
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Probes the bucket: HEAD, write, read back, encryption echo, clock skew, versioning."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:26
+msgid "Probing the object store…"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Progress"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud File URL Alias'
+#. Label of a Section Break field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Provenance"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Public Files Key"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Public Presign TTL"
+msgstr ""
+
+#. Option for the 'Cleanup Mode' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Quarantine"
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Quarantine Path"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:66
+msgid "Quarantine TTL cannot be negative."
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Quarantine Ttl Days"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Quarantined"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Queue"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:206
+msgid "Read the probe object back byte-for-byte."
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "Reason"
+msgstr ""
+
+#. Label of a Button field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Reconcile"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:48
+msgid "Reconcile Complete"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:37
+msgid "Reconcile walks the whole bucket and compares it against the object rows. It changes nothing. Continue?"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:44
+msgid "Reconciling…"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:255
+msgid "Recorded on the campaign with who approved and when."
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Ref Count"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Reference"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Reference Count"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "References"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:55
+msgid "Refresh"
+msgstr ""
+
+#. Label of a Button field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Refresh Storage Health"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Backup Settings'
+#. Label of a Data field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Region"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Remote Objects"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:50
+msgid "Remote objects"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:46
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:237
+msgid "Report Exported"
+msgstr ""
+
+#. Label of a Attach field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Report File"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Resolution Action"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Resolved"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Resolved At"
+msgstr ""
+
+#. Label of a Link field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Resolved By"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Restore Window (Days)"
+msgstr ""
+
+#: cloud_file_storage/backup/retention.py:44
+msgid "Restore Window Days"
+msgstr ""
+
+#: cloud_file_storage/backup/retention.py:47
+msgid "Restore Window Not Covered"
+msgstr ""
+
+#: cloud_file_storage/backup/restore.py:101
+msgid "Restore tier must be one of {0}."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:18
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:90
+msgid "Resume"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Retention"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Retention & Archival"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:113
+msgid "Retention Policy Refused"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Retry Backoff Base Secs"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Retry Count"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:20
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:96
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:223
+msgid "Retry Failed"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Retrying"
+msgstr ""
+
+#. Description of the 'Use Storage Credentials' (Check) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Reuse the region, endpoint and credentials from Cloud Storage Settings."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Rq Job Id"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Rules"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:63
+msgid "Rules preserved (not managed by this app)"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:63
+msgid "Rules that will be DROPPED"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:63
+msgid "Rules this app will write"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Reconcile Run'
+#. Label of a Section Break field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Run"
+msgstr ""
+
+#. Option for the 'Last Backup Status' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Reconcile Run'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Running"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "S3 Checksum SHA256"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "S3 Key"
+msgstr ""
+
+#. Option for the 'Operation Mode' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "S3_ONLY"
+msgstr ""
+
+#. Option for the 'Operation Mode' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "S3_PRIMARY_LOCAL_FALLBACK"
+msgstr ""
+
+#. Description of the 'Operation Mode' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "S3_PRIMARY_LOCAL_FALLBACK is the recommended production mode."
+msgstr ""
+
+#. Option for the 'Active Phase' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "SCAN_DB"
+msgstr ""
+
+#. Option for the 'Active Phase' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "SCAN_FS"
+msgstr ""
+
+#. Description of the 'URL Hash' (Data) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "SHA1 of old_url. Data(40) with a unique index (A11): old_url itself is too long to index directly."
+msgstr ""
+
+#. Label of a Code field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "SHA256 Manifest"
+msgstr ""
+
+#. Description of the 'SHA256 Manifest' (Code) field in DocType 'Cloud Storage
+#. Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "SHA256 of every artifact, as computed locally and confirmed against the remote object. The restore runbook checks a downloaded artifact against this before bench restore."
+msgstr ""
+
+#. Description of the 'Content SHA256' (Data) field in DocType 'Cloud Storage
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "SHA256 of the object bytes. The physical identity of the object (A7)."
+msgstr ""
+
+#. Option for the 'Server-Side Encryption' (Select) field in DocType 'Cloud
+#. Backup Settings'
+#. Option for the 'Server Side Encryption' (Select) field in DocType 'Cloud
+#. Storage Object'
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "SSE-KMS"
+msgstr ""
+
+#. Option for the 'Server-Side Encryption' (Select) field in DocType 'Cloud
+#. Backup Settings'
+#. Option for the 'Server Side Encryption' (Select) field in DocType 'Cloud
+#. Storage Object'
+#. Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "SSE-S3"
+msgstr ""
+
+#. Option for the 'Storage Class' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "STANDARD"
+msgstr ""
+
+#. Option for the 'Storage Class' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "STANDARD_IA"
+msgstr ""
+
+#. Option for the 'Control Flag' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "STOP"
+msgstr ""
+
+#. Option for the 'Backup Weekday' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Saturday"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Scan Cursor File"
+msgstr ""
+
+#. Label of a Password field in DocType 'Cloud Backup Settings'
+#. Label of a Password field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:59
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:52
+msgid "Secret Access Key"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Object'
+#. Label of a Select field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Server Side Encryption"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Server-Side Encryption"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:37
+msgid "Set a {0} before enabling cloud backups."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:75
+msgid "Set a {0} before generating a lifecycle policy. With an empty prefix the generated rules would carry {1}, which matches every object in {2} — including anything this app did not put there."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:42
+msgid "Set a {0}. An empty prefix would put backup artifacts at the bucket root, where the generated lifecycle rules cannot be scoped to them."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:58
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:51
+msgid "Set both {0} and {1}, or leave both empty and use the default credential chain."
+msgstr ""
+
+#. Description of the 'Fallback Queue Used' (Check) field in DocType 'Cloud
+#. Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Set when the campaign was started with --force-fallback-queue. Never silent."
+msgstr ""
+
+#. Description of the 'Deletion Scheduled At' (Datetime) field in DocType
+#. 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Set when the last reference goes away. Garbage collection is the only physical delete path."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:94
+msgid "Set {0} to at least 1 day, or clear {1}. A transition on day 0 would archive an artifact before it can be restored from warm storage."
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Severity"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Sha256"
+msgstr ""
+
+#: cloud_file_storage/health.py:259
+msgid "Short-lived operational bytes that stay on local disk by design: attachments of the LOCAL_OPERATIONAL doctypes, the bounded materialization cache, and files quarantined by a migration cleanup pass. These are never counted as migrated cloud attachments, and under S3_ONLY they remain a documented mode exemption."
+msgstr ""
+
+#. Description of the 'Bucket' (Data) field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Single private live bucket. Public delivery is served through CloudFront/OAC or presigned URLs, never through object ACLs."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Site Config Key"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Size Bytes"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Size Mismatch"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:50
+msgid "Size mismatches"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration File Ref'
+#. Label of a Data field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Skip Reason"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Conflict'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:165
+msgid "Skipped"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:94
+msgid "Skipped: no bucket is configured."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:106
+msgid "Skipped: the bucket could not be reached."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:221
+msgid "Skipped: the probe object could not be written."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:251
+msgid "Skipped: the store returned no Date header."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Source Path"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Stalled"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:16
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:88
+msgid "Start"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:205
+msgid "Start transferring objects for campaign {0}?"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Campaign'
+#. Label of a Datetime field in DocType 'Cloud Reconcile Run'
+#. Label of a Datetime field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Started At"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Migration Batch'
+#. Label of a Select field in DocType 'Cloud Migration Campaign'
+#. Label of a Select field in DocType 'Cloud Migration Conflict'
+#. Label of a Select field in DocType 'Cloud Migration Object'
+#. Label of a Select field in DocType 'Cloud Reconcile Run'
+#. Label of a Select field in DocType 'Cloud Storage Backup Log'
+#. Label of a Select field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:130
+msgid "Status"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Status Before Delete"
+msgstr ""
+
+#. Description of the 'Status Before Delete' (Select) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Status captured on entering pending_delete so a resurrection restores it instead of upgrading (A15)."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:19
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:92
+msgid "Stop After Current Batch"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:213
+msgid "Stop after the current batch commits? In-flight work is finished, not abandoned."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Stopped"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Stopping"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Storage Class"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#. Label of a HTML field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Storage Health"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Sub-Daily Retention Days"
+msgstr ""
+
+#. Option for the 'Last Backup Status' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Success"
+msgstr ""
+
+#. Option for the 'Backup Weekday' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Sunday"
+msgstr ""
+
+#. Name of a role
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "System Manager"
+msgstr "Systemmanager"
+
+#. Label of a Button field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Test Connection"
+msgstr ""
+
+#. Description of the 'Backup Prefix' (Data) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "The <code>{site}</code> token expands to the site name. Artifacts land under <code>&lt;prefix&gt;/&lt;frequency&gt;/&lt;timestamp&gt;/</code>."
+msgstr ""
+
+#: cloud_file_storage/overrides/file.py:278
+#: cloud_file_storage/overrides/file.py:285
+msgid "The File URL you've entered is incorrect"
+msgstr ""
+
+#. Description of the 'File' (Link) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "The File row that now owns new_url, when it is known. Informational: serving re-runs the permission gate against the resolved URL, never against this link."
+msgstr ""
+
+#. Description of the 'File Url' (Small Text) field in DocType 'Cloud Migration
+#. File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "The URL recorded at scan time. The A26 guard compares tabFile.file_url against this."
+msgstr ""
+
+#. Description of the 'Old URL' (Data) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "The URL that stopped resolving. Length 500 per A11 — long attachment names plus a private prefix overrun the 140-char Data default."
+msgstr ""
+
+#: cloud_file_storage/backup/retention.py:115
+msgid "The attachment bucket expires noncurrent versions after {0} days, which is shorter than the {1}-day restore window. Raise NoncurrentVersionExpiration to at least {1} days."
+msgstr ""
+
+#: cloud_file_storage/backup/settings.py:89
+msgid "The backup bucket must be a different bucket from the attachment bucket ({0}). Backup lifecycle rules move artifacts to archive storage classes, and a live attachment in an archive class cannot be served."
+msgstr ""
+
+#: cloud_file_storage/health.py:385
+msgid "The backup module is not installed on this site."
+msgstr ""
+
+#. Description of the 'New URL' (Data) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "The canonical URL to redirect to. Always /files/... or /private/files/..."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:242
+msgid "The dedicated {0} queue is not configured on this bench, so migration jobs would share the queues the ERP itself uses. Configure it (see docs/runbooks/deployment.md) or start with force_fallback_queue."
+msgstr ""
+
+#: cloud_file_storage/health.py:415
+msgid "The dedicated {0} queue is not configured on this bench. Migration jobs would share the queues the ERP itself uses — see docs/runbooks/deployment.md."
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:98
+msgid "The last cloud backup failed. Read the error on the newest Cloud Storage Backup Log row; a verification failure means the artifact in the bucket is not the artifact we sent, and it has been kept for inspection."
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:86
+msgid "The last cloud backup was {0} hours ago; {1} backups should be at most {2} hours apart. Check that the scheduler is running and the long queue is not stuck."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:85
+msgid "The live attachment bucket"
+msgstr ""
+
+#: cloud_file_storage/migration/conflicts.py:189
+msgid "The original file is not on disk; nothing can be copied from it."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:128
+msgid "The probe object is left in place on purpose: physical deletes belong to deferred garbage collection only. The key is fixed, so re-running this test overwrites it rather than adding another."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:199
+msgid "The probe object read back {0} byte(s) instead of {1}."
+msgstr ""
+
+#. Description of the 'Queue' (Data) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "The queue this campaign's jobs actually went to."
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:186
+msgid "The retention settings have changed since the lifecycle policy was last applied to {0}, or the bucket carries rules this app does not manage. Run Preview Lifecycle Policy to see the difference."
+msgstr ""
+
+#. Description of the 'Include Site Config' (Check) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "The site_config.json artifact. It carries the database password and the backup encryption key — the backup bucket must be private and encrypted."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:228
+msgid "The store applied {0}."
+msgstr ""
+
+#. Description of the 'Derived Suffix' (Data) field in DocType 'Cloud Storage
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "The thumbnail suffix core appends to the file name (\"small\" in foo_small.png)."
+msgstr ""
+
+#: cloud_file_storage/api/compat.py:177
+msgid "The {0} hook is not supported by Cloud File Storage. Object keys are content-addressed and are the object's identity, so a site-supplied key cannot be honoured. Remove the hook; see docs/adr/amendments-register.md A24."
+msgstr ""
+
+#: cloud_file_storage/serving/private.py:210
+msgid "This file is temporarily unavailable. Please try again shortly."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:261
+msgid "This host's clock is {0}s from the object store's. Signed requests are rejected beyond {1}s — fix NTP on this host."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:272
+msgid "This host's clock is {0}s from the object store's; signing fails at {1}s."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:565
+msgid "This lifecycle policy would destroy value: {0}"
+msgstr ""
+
+#: cloud_file_storage/backup/health.py:121
+msgid "This site is in {0}, so attachment bytes live in the object store and their links ride in the database dump — but the backup job is still tarring local files. Turn off the file tarball checkboxes, and remove any --with-files entries from the bench backup crontab."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:415
+msgid "Those {0} artifacts also carry {1}'s per-object overhead of about 40 KB each ({2} MB of pure overhead) once they transition."
+msgstr ""
+
+#. Description of the 'Reconcile' (Button) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Three-way diff between the bucket, the object rows and the File rows. System Manager only."
+msgstr ""
+
+#. Label of a Small Text field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Thumbnail Disk Path"
+msgstr ""
+
+#. Option for the 'Backup Weekday' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Thursday"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Title"
+msgstr ""
+
+#. Label of a Long Int field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Total Bytes"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Total Files"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Total Objects"
+msgstr ""
+
+#. Description of the 'Delete After Days' (Int) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Total retention for daily, weekly and manual artifacts. 0 keeps them forever."
+msgstr ""
+
+#. Description of the 'Sub-Daily Retention Days' (Int) field in DocType 'Cloud
+#. Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Total retention for the hourly and 6-hourly prefixes, which accumulate 24 and 4 artifacts a day."
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Transfer"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Transfer Max Concurrency"
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Trigger"
+msgstr ""
+
+#. Option for the 'Backup Weekday' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Tuesday"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:96
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:260
+msgid "Type DELETE LOCAL FILES to confirm"
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:85
+msgid "Type {0} exactly to confirm deleting verified local copies."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.js:79
+msgid "Type {0} to confirm"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:554
+msgid "Type {0} to confirm applying the lifecycle policy to {1}."
+msgstr ""
+
+#. Option for the 'Phase' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Active Phase' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "UPLOAD"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "URL Hash"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:90
+msgid "Unknown Storage Class"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Reconcile Run'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_reconcile_run/cloud_reconcile_run.json
+msgid "Unreferenced Cso"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:50
+msgid "Unreferenced objects"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "UploadDispatched"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:162
+msgid "Uploaded"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Object'
+#. Label of a Datetime field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Uploaded At"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:161
+msgid "Uploading"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Url Hash"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Migration File Ref'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_file_ref/cloud_migration_file_ref.json
+msgid "Url Rewritten"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Storage Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "Use Default Credential Chain"
+msgstr ""
+
+#. Label of a Check field in DocType 'Cloud Backup Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Use Storage Credentials"
+msgstr ""
+
+#. Option for the 'Phase' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Active Phase' (Select) field in DocType 'Cloud Migration
+#. Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "VERIFY"
+msgstr ""
+
+#. Label of a Section Break field in DocType 'Cloud Storage Backup Log'
+#. Label of a Section Break field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Verification"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:163
+msgid "Verified"
+msgstr ""
+
+#. Label of a Datetime field in DocType 'Cloud Migration Object'
+#. Label of a Datetime field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Verified At"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:21
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:97
+msgid "Verify"
+msgstr ""
+
+#. Label of a Int field in DocType 'Cloud Migration Campaign'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.json
+msgid "Verify Strategy Cutover Mb"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:51
+msgid "Verify strategy cutover ({0} MB) must not exceed the multipart threshold ({1} MB): above the threshold the object's S3 checksum is composite and cannot be compared against a full-object SHA256."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "VerifyDispatched"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Batch'
+#. Option for the 'Status' (Select) field in DocType 'Cloud Migration Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "Verifying"
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Version ID"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:334
+msgid "Versioning does not cover the restore window."
+msgstr ""
+
+#: cloud_file_storage/backup/retention.py:85
+msgid "Versioning is not enabled on the attachment bucket {0}. Restore Window Days is {1}, but without versioning an object deleted outside this app is gone immediately and cannot be restored at all."
+msgstr ""
+
+#. Label of a Select field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "Visibility"
+msgstr ""
+
+#. Option for the 'Severity' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "Warning"
+msgstr ""
+
+#. Option for the 'Backup Weekday' (Select) field in DocType 'Cloud Backup
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+msgid "Wednesday"
+msgstr ""
+
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Backup Settings'
+#. Option for the 'Frequency' (Select) field in DocType 'Cloud Storage Backup
+#. Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Weekly"
+msgstr ""
+
+#. Description of the 'Local Backup Path' (Data) field in DocType 'Cloud
+#. Storage Backup Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "Where the artifacts were written locally. Kept on the site even when the upload failed."
+msgstr ""
+
+#. Label of a Data field in DocType 'Cloud Migration Batch'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_batch/cloud_migration_batch.json
+msgid "Worker Host"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.js:75
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:136
+msgid "Working…"
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:184
+msgid "Wrote the probe object."
+msgstr ""
+
+#: cloud_file_storage/serving/private.py:58
+#: cloud_file_storage/serving/private.py:77
+msgid "You don't have permission to access this file"
+msgstr ""
+
+#. Option for the 'Reason' (Select) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "adoption"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "adoption_failed"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "ambiguous_privacy"
+msgstr ""
+
+#. Option for the 'Addressing Style' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "auto"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "backup_lifecycle_applied"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "backup_presign_issued"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:456
+msgid "blockers"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:337
+msgid "cache"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "campaign_transition"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "checksum_mismatch"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "checksum_unstable"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "cleanup_blocked"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "cleanup_refused"
+msgstr ""
+
+#. Option for the 'Reason' (Select) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "conflict"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "conflict_action"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "conflicting_url"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "corrupt_metadata"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "deleted"
+msgstr ""
+
+#: cloud_file_storage/backup/restore.py:223
+msgid "downloaded"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:433
+msgid "entries awaiting write-back"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#. Option for the 'Status Before Delete' (Select) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "failed"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "file_link"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:341
+msgid "files"
+msgstr ""
+
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "healthy_unique"
+msgstr ""
+
+#. Description of the 'Public Presign TTL' (Int) field in DocType 'Cloud
+#. Storage Settings'
+#. Description of the 'Private Presign TTL' (Int) field in DocType 'Cloud
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "in seconds"
+msgstr "in Sekunden"
+
+#: cloud_file_storage/backup/restore.py:133
+msgid "inspected"
+msgstr ""
+
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "legacy_fork"
+msgstr ""
+
+#. Option for the 'Identity Kind' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "legacy_fork_key"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#. Option for the 'Status Before Delete' (Select) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "legacy_unverified"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "link_skipped"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:339
+msgid "local by design"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "local_delete"
+msgstr ""
+
+#. Option for the 'Identity Kind' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "local_private"
+msgstr ""
+
+#. Option for the 'Identity Kind' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "local_public"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "local_quarantine"
+msgstr ""
+
+#. Option for the 'Reason' (Select) field in DocType 'Cloud File URL Alias'
+#. Option for the 'Trigger' (Select) field in DocType 'Cloud Storage Backup
+#. Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "manual"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "missing_physical"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:337
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:147
+msgid "objects"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:433
+msgid "of"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:337
+msgid "operational files"
+msgstr ""
+
+#. Option for the 'Identity Kind' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "orphan_disk"
+msgstr ""
+
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "orphan_physical"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#. Option for the 'Status Before Delete' (Select) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "orphaned"
+msgstr ""
+
+#. Option for the 'Addressing Style' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "path"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "pending_delete"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#. Option for the 'Status Before Delete' (Select) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "pending_upload"
+msgstr ""
+
+#. Option for the 'Reason' (Select) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "privacy_flip"
+msgstr ""
+
+#. Option for the 'Visibility' (Select) field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "private"
+msgstr ""
+
+#. Option for the 'Visibility' (Select) field in DocType 'Cloud Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "public"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "quarantine_purge"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:337
+msgid "quarantined"
+msgstr ""
+
+#. Option for the 'Reason' (Select) field in DocType 'Cloud File URL Alias'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_file_url_alias/cloud_file_url_alias.json
+msgid "relink"
+msgstr ""
+
+#: cloud_file_storage/migration/conflicts.py:175
+msgid "relink only applies to a conflicting_url conflict."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/page/cloud_migration_dashboard/cloud_migration_dashboard.js:147
+msgid "remaining"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "remote_adopt"
+msgstr ""
+
+#. Option for the 'Identity Kind' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "remote_https"
+msgstr ""
+
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "remote_url"
+msgstr ""
+
+#: cloud_file_storage/migration/conflicts.py:117
+msgid "resolve_privacy only applies to an ambiguous_privacy conflict."
+msgstr ""
+
+#: cloud_file_storage/backup/restore.py:105
+msgid "restored from archive"
+msgstr ""
+
+#. Option for the 'Trigger' (Select) field in DocType 'Cloud Storage Backup
+#. Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_backup_log/cloud_storage_backup_log.json
+msgid "scheduled"
+msgstr ""
+
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "shared_content"
+msgstr ""
+
+#. Option for the 'Classification' (Select) field in DocType 'Cloud Migration
+#. Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_object/cloud_migration_object.json
+msgid "shared_url"
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:82
+msgid "the bucket"
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:337
+msgid "thumbnails"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "upload_failed"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#. Option for the 'Status Before Delete' (Select) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+msgid "uploaded"
+msgstr ""
+
+#. Option for the 'Action' (Select) field in DocType 'Cloud Storage Audit Log'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_audit_log/cloud_storage_audit_log.json
+msgid "url_rewrite"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Cloud Storage Object'
+#. Option for the 'Status Before Delete' (Select) field in DocType 'Cloud
+#. Storage Object'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.json
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:337
+msgid "verified"
+msgstr ""
+
+#. Option for the 'Conflict Type' (Select) field in DocType 'Cloud Migration
+#. Conflict'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_conflict/cloud_migration_conflict.json
+msgid "verify_failed"
+msgstr ""
+
+#. Option for the 'Addressing Style' (Select) field in DocType 'Cloud Storage
+#. Settings'
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.json
+msgid "virtual"
+msgstr ""
+
+#: cloud_file_storage/backup/retention.py:36
+msgid "{0} ({1} days) is shorter than {2} ({3} days). The grace period is the delay before an unreferenced object is physically deleted, so a shorter grace means the object is gone before the restore window it promises has expired. Raise the grace to at least {3} days, or shorten the restore window."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:456
+msgid "{0} Blocker conflict(s) are still open; resolve or skip them before approving cleanup."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:381
+msgid "{0} artifacts are never deleted: no expiration rule is generated for {1}, so that prefix grows without bound."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:352
+msgid "{0} artifacts move to {1} on day {2} but are deleted on day {3}, before {1}'s {4}-day minimum billing duration. You pay the full minimum for storage you deleted. Raise the retention or drop the archive transition."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:402
+msgid "{0} backups kept for {1} days accumulate about {2} artifacts under {3}. Each PUT, each lifecycle transition and each archived object's 40 KB overhead is billed per object."
+msgstr ""
+
+#: cloud_file_storage/migration/api.py:172
+msgid "{0} cannot be set when a campaign is created. The destructive choices are made at the destructive moment: pass direct_delete to start_cleanup, which is System-Manager-only and audited."
+msgstr ""
+
+#: cloud_file_storage/backup/lifecycle.py:116
+msgid "{0} cannot use the storage class {1}: objects there are not synchronously retrievable. Allowed: {2}. Archive classes are for backup artifacts only."
+msgstr ""
+
+#: cloud_file_storage/health.py:74
+msgid "{0} file(s) under {1}. These are private-namespaced files inside the PUBLIC site tree, which nginx serves to unauthenticated callers off disk (try_files /<site>/public/$uri). This is upstream frappe behaviour: File.make_thumbnail writes every thumbnail under public/ even when the thumbnail URL is /private/files/... . Cloud File Storage does not move files it does not manage, so remediate by hand: move each file to the matching private/files/ path (a thumbnail of a cloud-backed file can simply be deleted — it is regenerated on demand). See docs/runbooks/deployment.md."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:94
+msgid "{0} is listed more than once in {1}."
+msgstr ""
+
+#: cloud_file_storage/backup/restore.py:175
+msgid "{0} is not a backup artifact of this site: it is not under {1}."
+msgstr ""
+
+#: cloud_file_storage/migration/conflicts.py:185
+msgid "{0} is not a reference of this object."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.py:65
+msgid "{0} is not a valid Cloud Storage Object status."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_migration_campaign/cloud_migration_campaign.py:41
+msgid "{0} is not a valid campaign status."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:89
+msgid "{0} is not an archive storage class."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_object/cloud_storage_object.py:59
+msgid "{0} is required unless the object is legacy_unverified."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_backup_settings/cloud_backup_settings.py:79
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:73
+msgid "{0} must not include query strings or fragments."
+msgstr "{0} darf keine Query-Strings oder Fragmente enthalten."
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.py:117
+msgid "{0} object(s) are already recorded against the previous connection settings. Changing {1} does not move them: they will stop resolving until the bucket is repointed back or a migration campaign moves them."
+msgstr ""
+
+#: cloud_file_storage/cloud_file_storage/doctype/cloud_storage_settings/cloud_storage_settings.js:225
+msgid "{0} object(s) requeued. {1} have spent their attempts and are in the conflict queue."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:243
+msgid "{0} was requested but the store applied {1}."
+msgstr ""
+
+#: cloud_file_storage/storage/diagnostics.py:233
+msgid "{0} was requested but the store did not report applying any encryption. Some S3-compatible providers accept the header and ignore it."
+msgstr ""
+
+#. Count format of shortcut in the Cloud Storage Workspace
+#: cloud_file_storage/cloud_file_storage/workspace/cloud_storage/cloud_storage.json
+msgid "{} open"
+msgstr ""
+

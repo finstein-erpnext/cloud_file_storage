@@ -1,0 +1,633 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+      - version-15
+      # The v1 delivery runs on the feature integration branch and its phase branches.
+      # Without them no workflow fires on this repo's actual topology, and the P1 exit
+      # criterion "3-ref matrix green" cannot be demonstrated.
+      - feat/enterprise-cloud-storage-v15
+      - "phase/**"
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "**.html"
+      - "**.csv"
+      - "**.po"
+      - "**.pot"
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - ".pre-commit-config.yaml"
+      - "license.txt"
+      - "README.md"
+      - ".github/workflows/linter.yml"
+
+concurrency:
+  group: ci-cloud_file_storage-${{ github.ref }}
+  cancel-in-progress: true
+
+# **Job timeouts are a release-gate requirement, not tuning.** At bf0d88a two mandatory matrix
+# jobs stalled inside `apt update` for 54 and 56 minutes and a re-run stalled another 38, producing
+# no output and no failure; GitHub's default is six hours, so a stall of unknown cause consumes an
+# afternoon and reads as slowness rather than as a fault. Every job therefore carries an explicit
+# `timeout-minutes`, so any future apt stall, network hang, bench deadlock or unknown cause
+# terminates as a legible CI failure.
+#
+# Policy, from measured durations at bf0d88a: server jobs (bench init + full suite) ran 5.7-12.9
+# min, so they get 40 - roughly 3x the worst legitimate run, enough headroom for runner variance,
+# far below the six-hour default, and tight enough that a genuine 3x regression still fails rather
+# than hides. Aggregation jobs (artifact download + a gate script) ran 0.1 min and get 15.
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        # Floor, bench-verified revision, tip (A34 / docs/design/delivery-platform.md §5.0),
+        # plus the v16 branch. `include` rather than a bare list because the interpreter is
+        # NOT free to vary: frappe v15 declares `requires-python = ">=3.10,<3.14"` and v16
+        # declares `">=3.14,<3.15"`. Those ranges are DISJOINT, so each ref must be pinned to
+        # an interpreter it can actually install on -- one shared python is impossible.
+        include:
+          - frappe_ref: v15.16.0
+            python: "3.10"
+          - frappe_ref: v15.93.0
+            python: "3.10"
+          - frappe_ref: version-15
+            python: "3.10"
+    name: Server (frappe ${{ matrix.frappe_ref }}, py${{ matrix.python }})
+
+    services:
+      redis-cache:
+        image: redis:alpine
+        ports:
+          - 13000:6379
+      redis-queue:
+        image: redis:alpine
+        ports:
+          - 11000:6379
+      mariadb:
+        image: mariadb:11.8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mariadb-admin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v6
+
+      - name: Find tests
+        run: |
+          echo "Finding tests"
+          grep -rn "def test" > /dev/null
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          check-latest: true
+
+      - name: Cache pip
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/*requirements.txt', '**/pyproject.toml', '**/setup.py', '**/setup.cfg') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: 'echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT'
+
+      - uses: actions/cache@v5
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install MariaDB Client
+        run: |
+          # Deterministically non-interactive. `-y` answers apt's own "Do you want to continue?";
+          # `DEBIAN_FRONTEND=noninteractive` suppresses debconf dialogs raised during package
+          # configuration, which `-y` does not. The variable is placed AFTER `sudo` on purpose:
+          # `DEBIAN_FRONTEND=... sudo apt-get ...` is stripped by sudo's env_reset and reads as
+          # protection while providing none.
+          #
+          # **This is hardening, not the diagnosed cause of the bf0d88a stall.** The retained logs
+          # show that stall occurred inside `apt update` — `apt-get install` never executed, and
+          # the logs contain no confirmation prompt and no lock-contention message. Those two
+          # hypotheses are excluded; the candidate field is NOT exhausted — a network or mirror
+          # stall inside `apt update` remains unexcluded and fits the evidence. The mechanism was
+          # never established; `timeout-minutes` above is what bounds it. Recorded here so nobody
+          # reads this flag as the fix for that incident.
+          # Hardened at the site: the bf0d88a stall happened *here*, inside `apt update`, and
+          # bare apt has no read timeout — a mirror that completes the handshake and then
+          # stalls hangs until something external kills it. Retries plus an explicit timeout
+          # turn that into a fast, legible failure inside the step; `timeout-minutes` on the
+          # job remains the backstop for whatever this does not catch.
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=15 update
+          # `libmariadb-dev` is required by the v16 leg and harmless on the v15 legs: frappe
+          # v16 pins `mysqlclient==2.2.7`, which publishes wheels only for cp39-cp313. On
+          # python 3.14 pip therefore builds it from source and needs the client headers.
+          # frappe's own v16 CI does the same (.github/actions/setup/action.yml).
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-client libmariadb-dev
+
+      - name: Setup bench and site
+        run: bash $GITHUB_WORKSPACE/.github/helper/install.sh
+        env:
+          FRAPPE_REF: ${{ matrix.frappe_ref }}
+          CI: "Yes"
+
+      - name: Run Tests
+        working-directory: /home/runner/frappe-bench
+        run: |
+          bench --site test_site run-tests \
+            --app cloud_file_storage \
+            --coverage \
+            --junit-xml-output "$GITHUB_WORKSPACE/junit.xml"
+        env:
+          TYPE: server
+
+      # Coverage is NOT judged here. These jobs run deliberately partial slices of one
+      # corpus, and the 90% floor was measured over the whole of it. Each publishes its data;
+      # the `coverage` job combines them and applies the floor once, to the union.
+      - name: Stage coverage shard
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/covshard"
+          test -s /home/runner/frappe-bench/sites/.coverage \
+            || { echo "::error::no coverage data at sites/.coverage - did run-tests use --coverage?"; exit 1; }
+          cp /home/runner/frappe-bench/sites/.coverage "$GITHUB_WORKSPACE/covshard/.coverage.frappe-${{ matrix.frappe_ref }}"
+          echo "${{ github.sha }}" > "$GITHUB_WORKSPACE/covshard/coverage-sha.txt"
+
+      - name: Publish coverage shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-frappe-${{ matrix.frappe_ref }}
+          path: ${{ github.workspace }}/covshard/
+          if-no-files-found: error
+          # `.coverage.*` is dot-prefixed and upload-artifact excludes hidden files by
+          # default; without this the artifact uploads with the sha stamp and no data.
+          include-hidden-files: true
+
+      - name: Contract completeness (C1..C19)
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_contract_completeness.sh
+        env:
+          JUNIT_XML: ${{ github.workspace }}/junit.xml
+
+      # PLAN §B P6: "the T-BACKUP suite plus all refusal guards". Named identities, so a
+      # renamed or deleted guard fails the job instead of shrinking the gate.
+      - name: Backup completeness (T-BACKUP refusal guards)
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_backup_completeness.sh
+        env:
+          JUNIT_XML: ${{ github.workspace }}/junit.xml
+
+  tests-minio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+    name: Server (MinIO integration)
+
+    services:
+      redis-cache:
+        image: redis:alpine
+        ports:
+          - 13000:6379
+      redis-queue:
+        image: redis:alpine
+        ports:
+          - 11000:6379
+      mariadb:
+        image: mariadb:11.8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mariadb-admin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+    steps:
+      - name: Clone
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          check-latest: true
+
+      - name: Install MariaDB Client
+        run: |
+          # Deterministically non-interactive. `-y` answers apt's own "Do you want to continue?";
+          # `DEBIAN_FRONTEND=noninteractive` suppresses debconf dialogs raised during package
+          # configuration, which `-y` does not. The variable is placed AFTER `sudo` on purpose:
+          # `DEBIAN_FRONTEND=... sudo apt-get ...` is stripped by sudo's env_reset and reads as
+          # protection while providing none.
+          #
+          # **This is hardening, not the diagnosed cause of the bf0d88a stall.** The retained logs
+          # show that stall occurred inside `apt update` — `apt-get install` never executed, and
+          # the logs contain no confirmation prompt and no lock-contention message. Those two
+          # hypotheses are excluded; the candidate field is NOT exhausted — a network or mirror
+          # stall inside `apt update` remains unexcluded and fits the evidence. The mechanism was
+          # never established; `timeout-minutes` above is what bounds it. Recorded here so nobody
+          # reads this flag as the fix for that incident.
+          # Hardened at the site: the bf0d88a stall happened *here*, inside `apt update`, and
+          # bare apt has no read timeout — a mirror that completes the handshake and then
+          # stalls hangs until something external kills it. Retries plus an explicit timeout
+          # turn that into a fast, legible failure inside the step; `timeout-minutes` on the
+          # job remains the backstop for whatever this does not catch.
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=15 update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-client
+
+      - name: Start MinIO
+        run: |
+          docker run -d \
+            --name minio \
+            -p 9000:9000 \
+            -e MINIO_ROOT_USER=minioadmin \
+            -e MINIO_ROOT_PASSWORD=minioadmin \
+            quay.io/minio/minio:latest \
+            server /data --address ":9000"
+
+          for i in {1..30}; do
+            if curl -fsS "http://127.0.0.1:9000/minio/health/live" > /dev/null; then
+              echo "MinIO is healthy"
+              break
+            fi
+            sleep 1
+          done
+
+      - name: Create bucket
+        run: |
+          pip install boto3
+          python - <<'PY'
+          import boto3
+          from botocore.client import Config
+          client = boto3.client(
+              "s3",
+              endpoint_url="http://127.0.0.1:9000",
+              aws_access_key_id="minioadmin",
+              aws_secret_access_key="minioadmin",
+              region_name="us-east-1",
+              config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
+          )
+          buckets = {b["Name"] for b in client.list_buckets().get("Buckets", [])}
+          if "cloud-file-storage-test" not in buckets:
+              client.create_bucket(Bucket="cloud-file-storage-test")
+          PY
+
+      - name: Setup bench and site
+        run: bash $GITHUB_WORKSPACE/.github/helper/install.sh
+        env:
+          FRAPPE_REF: version-15
+          CI: "Yes"
+      - name: Clone Semgrep rules for the security anti-vacuity control
+        # tests/test_semgrep_rules.py FAILS rather than skips when CFS_SEMGREP_RULES is set,
+        # so the security control cannot silently vanish from a green run.
+        run: |
+          git clone --depth 1 https://github.com/frappe/semgrep-rules.git "$HOME/frappe-semgrep-rules"
+          pip install semgrep
+
+
+      - name: Run Tests (with MinIO integration)
+        working-directory: /home/runner/frappe-bench
+        run: |
+          bench --site test_site run-tests \
+            --app cloud_file_storage \
+            --coverage \
+            --junit-xml-output "$GITHUB_WORKSPACE/junit.xml"
+        env:
+          TYPE: server
+          RUN_MINIO_INTEGRATION_TESTS: "1"
+          CFS_SEMGREP_RULES: /home/runner/frappe-semgrep-rules/rules
+          CLOUD_FILE_STORAGE_MINIO_ENDPOINT: "http://127.0.0.1:9000"
+          CLOUD_FILE_STORAGE_MINIO_ACCESS_KEY: "minioadmin"
+          CLOUD_FILE_STORAGE_MINIO_SECRET_KEY: "minioadmin"
+          CLOUD_FILE_STORAGE_MINIO_BUCKET: "cloud-file-storage-test"
+          CLOUD_FILE_STORAGE_MINIO_REGION: "us-east-1"
+
+      # Coverage is NOT judged here. These jobs run deliberately partial slices of one
+      # corpus, and the 90% floor was measured over the whole of it. Each publishes its data;
+      # the `coverage` job combines them and applies the floor once, to the union.
+      - name: Stage coverage shard
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/covshard"
+          test -s /home/runner/frappe-bench/sites/.coverage \
+            || { echo "::error::no coverage data at sites/.coverage - did run-tests use --coverage?"; exit 1; }
+          cp /home/runner/frappe-bench/sites/.coverage "$GITHUB_WORKSPACE/covshard/.coverage.minio"
+          echo "${{ github.sha }}" > "$GITHUB_WORKSPACE/covshard/coverage-sha.txt"
+
+      - name: Publish coverage shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-minio
+          path: ${{ github.workspace }}/covshard/
+          if-no-files-found: error
+          # `.coverage.*` is dot-prefixed and upload-artifact excludes hidden files by
+          # default; without this the artifact uploads with the sha stamp and no data.
+          include-hidden-files: true
+
+      - name: Contract completeness (C1..C19)
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_contract_completeness.sh
+        env:
+          JUNIT_XML: ${{ github.workspace }}/junit.xml
+
+      # Without this the job above can pass having skipped every real S3 round trip: the
+      # module skips itself when RUN_MINIO_INTEGRATION_TESTS is not exactly "1", the backup
+      # gate does not watch this module, and C1..C19 pass storage-mocked. A typo in any of
+      # the six env vars would ship a green "tests-minio" that never touched S3.
+      # `if: always()` so a failing test run still reports WHICH of the two happened.
+      - name: Publish junit for the F2 mission-matrix gate
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: junit-l2-minio
+          path: ${{ github.workspace }}/junit.xml
+          if-no-files-found: error
+
+      - name: MinIO completeness (19 real-S3 tests)
+        if: always()
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_minio_completeness.sh
+        env:
+          JUNIT_XML: ${{ github.workspace }}/junit.xml
+
+  # PLAN §B, the P4 row: "L3 job (erpnext+hrms+india_compliance)" with "job mandatory in
+  # CI", and ACCEPTANCE_GATES F5. Mandatory means exactly that: no `continue-on-error`, and
+  # a completeness gate so a run that installed three apps and then skipped every test that
+  # needs them cannot report green (A22).
+  tests-ecosystem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    name: Server (L3 ecosystem - erpnext + hrms + india_compliance)
+
+    services:
+      redis-cache:
+        image: redis:alpine
+        ports:
+          - 13000:6379
+      redis-queue:
+        image: redis:alpine
+        ports:
+          - 11000:6379
+      mariadb:
+        image: mariadb:11.8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mariadb-admin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+
+    steps:
+      - name: Clone
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          check-latest: true
+
+      - name: Install MariaDB Client
+        run: |
+          # Deterministically non-interactive. `-y` answers apt's own "Do you want to continue?";
+          # `DEBIAN_FRONTEND=noninteractive` suppresses debconf dialogs raised during package
+          # configuration, which `-y` does not. The variable is placed AFTER `sudo` on purpose:
+          # `DEBIAN_FRONTEND=... sudo apt-get ...` is stripped by sudo's env_reset and reads as
+          # protection while providing none.
+          #
+          # **This is hardening, not the diagnosed cause of the bf0d88a stall.** The retained logs
+          # show that stall occurred inside `apt update` — `apt-get install` never executed, and
+          # the logs contain no confirmation prompt and no lock-contention message. Those two
+          # hypotheses are excluded; the candidate field is NOT exhausted — a network or mirror
+          # stall inside `apt update` remains unexcluded and fits the evidence. The mechanism was
+          # never established; `timeout-minutes` above is what bounds it. Recorded here so nobody
+          # reads this flag as the fix for that incident.
+          # Hardened at the site: the bf0d88a stall happened *here*, inside `apt update`, and
+          # bare apt has no read timeout — a mirror that completes the handshake and then
+          # stalls hangs until something external kills it. Retries plus an explicit timeout
+          # turn that into a fast, legible failure inside the step; `timeout-minutes` on the
+          # job remains the backstop for whatever this does not catch.
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=15 update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-client
+
+      - name: Start MinIO
+        run: |
+          docker run -d \
+            --name minio \
+            -p 9000:9000 \
+            -e MINIO_ROOT_USER=minioadmin \
+            -e MINIO_ROOT_PASSWORD=minioadmin \
+            quay.io/minio/minio:latest \
+            server /data --address ":9000"
+
+          for i in {1..30}; do
+            if curl -fsS "http://127.0.0.1:9000/minio/health/live" > /dev/null; then
+              echo "MinIO is healthy"
+              break
+            fi
+            sleep 1
+          done
+
+      - name: Create bucket
+        run: |
+          pip install boto3
+          python - <<'PY'
+          import boto3
+          from botocore.client import Config
+          client = boto3.client(
+              "s3",
+              endpoint_url="http://127.0.0.1:9000",
+              aws_access_key_id="minioadmin",
+              aws_secret_access_key="minioadmin",
+              region_name="us-east-1",
+              config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
+          )
+          buckets = {b["Name"] for b in client.list_buckets().get("Buckets", [])}
+          if "cloud-file-storage-test" not in buckets:
+              client.create_bucket(Bucket="cloud-file-storage-test")
+          PY
+
+      - name: Setup bench, site and ecosystem apps
+        run: bash $GITHUB_WORKSPACE/.github/helper/install.sh
+        env:
+          # The revision the ecosystem tests were written and verified against.
+          FRAPPE_REF: v15.93.0
+          INSTALL_ECOSYSTEM: "1"
+          CI: "Yes"
+
+      - name: Assert the ecosystem apps are actually installed
+        working-directory: /home/runner/frappe-bench
+        run: |
+          # Without this, a get-app that silently failed would show up only as a skipped
+          # test suite, and the completeness gate below would be the first thing to notice.
+          installed="$(bench --site test_site list-apps)"
+          echo "$installed"
+          for app in erpnext hrms india_compliance cloud_file_storage; do
+            echo "$installed" | grep -qw "$app" || {
+              echo "::error::$app is not installed on the L3 site"
+              exit 1
+            }
+          done
+
+      - name: Run Tests (ecosystem + MinIO)
+        working-directory: /home/runner/frappe-bench
+        run: |
+          bench --site test_site run-tests \
+            --app cloud_file_storage \
+            --coverage \
+            --junit-xml-output "$GITHUB_WORKSPACE/junit.xml"
+        env:
+          TYPE: server
+          RUN_MINIO_INTEGRATION_TESTS: "1"
+          CLOUD_FILE_STORAGE_MINIO_ENDPOINT: "http://127.0.0.1:9000"
+          CLOUD_FILE_STORAGE_MINIO_ACCESS_KEY: "minioadmin"
+          CLOUD_FILE_STORAGE_MINIO_SECRET_KEY: "minioadmin"
+          CLOUD_FILE_STORAGE_MINIO_BUCKET: "cloud-file-storage-test"
+          CLOUD_FILE_STORAGE_MINIO_REGION: "us-east-1"
+
+      # Coverage is NOT judged here. These jobs run deliberately partial slices of one
+      # corpus, and the 90% floor was measured over the whole of it. Each publishes its data;
+      # the `coverage` job combines them and applies the floor once, to the union.
+      - name: Stage coverage shard
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/covshard"
+          test -s /home/runner/frappe-bench/sites/.coverage \
+            || { echo "::error::no coverage data at sites/.coverage - did run-tests use --coverage?"; exit 1; }
+          cp /home/runner/frappe-bench/sites/.coverage "$GITHUB_WORKSPACE/covshard/.coverage.ecosystem"
+          echo "${{ github.sha }}" > "$GITHUB_WORKSPACE/covshard/coverage-sha.txt"
+
+      - name: Publish coverage shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-ecosystem
+          path: ${{ github.workspace }}/covshard/
+          if-no-files-found: error
+          # `.coverage.*` is dot-prefixed and upload-artifact excludes hidden files by
+          # default; without this the artifact uploads with the sha stamp and no data.
+          include-hidden-files: true
+
+      - name: Contract completeness (C1..C19)
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_contract_completeness.sh
+        env:
+          JUNIT_XML: ${{ github.workspace }}/junit.xml
+
+      - name: Ecosystem completeness (T-RIV / T-ITEMIMG / T-IC-LIVE)
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_ecosystem_completeness.sh
+        env:
+          JUNIT_XML: ${{ github.workspace }}/junit.xml
+
+      - name: Publish junit for the F2 mission-matrix gate
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: junit-l3-ecosystem
+          path: ${{ github.workspace }}/junit.xml
+          if-no-files-found: error
+
+  # F2 -- the mission matrix spans layers, so its gate consumes both reports.
+  # L1/L2 scenarios execute on the MinIO site; T-RIV, T-ITEMIMG and T-IC-LIVE only execute
+  # where erpnext/hrms/india_compliance are installed. A gate reading one report would call
+  # the other layer's scenarios missing, which is why this is a job rather than a step.
+  mission-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    name: F2 mission matrix (43 scenarios)
+    needs: [tests-minio, tests-ecosystem]
+    steps:
+      - name: Clone
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Fetch the L2 junit
+        uses: actions/download-artifact@v4
+        with:
+          name: junit-l2-minio
+          path: reports/l2
+
+      - name: Fetch the L3 junit
+        uses: actions/download-artifact@v4
+        with:
+          name: junit-l3-ecosystem
+          path: reports/l3
+
+      - name: Mission matrix completeness (43/43 executed, 0 skipped)
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_mission_matrix.sh
+        env:
+          JUNIT_XML: ${{ github.workspace }}/reports/l2/junit.xml:${{ github.workspace }}/reports/l3/junit.xml
+
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    name: Combined coverage gate (>= 90%)
+    needs: [tests, tests-minio, tests-ecosystem]
+    steps:
+      - name: Clone
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # Pinned to the producers' major. frappe pins `coverage ~=6.5.0` (frappe/pyproject.toml),
+      # so the shards are WRITTEN by 6.5. Reading them with whatever 7.x resolves that day works
+      # only while the on-disk schema happens to match; when it diverges the validator reports
+      # "unreadable or corrupt", which is a wrong cause for a version mismatch — exactly the
+      # misattribution this gate exists to avoid.
+      - name: Install coverage
+        run: pip install "coverage~=6.5.0"
+
+      - name: Fetch every coverage shard
+        uses: actions/download-artifact@v4
+        with:
+          pattern: coverage-*
+          path: coverage-shards
+
+      # COVERAGE_EXPECTED_SHARDS is declared, not discovered. A gate that measures whatever
+      # happens to be present passes vacuously when a job is skipped or fails to upload;
+      # naming the required set makes a missing shard a GATE EXECUTION FAILURE (exit 2),
+      # which is reported separately from a genuine shortfall (exit 1).
+      - name: Combined coverage gate
+        run: bash $GITHUB_WORKSPACE/.github/helper/check_coverage.sh
+        env:
+          COVERAGE_ARTIFACTS_DIR: ${{ github.workspace }}/coverage-shards
+          COVERAGE_EXPECTED_SHARDS: >-
+            frappe-v15.16.0 frappe-v15.93.0 frappe-version-15 minio ecosystem
+          COVERAGE_SHA: ${{ github.sha }}
+          # The shards record `<bench>/apps/cloud_file_storage/...` because frappe measures the
+          # bench tree and coverage stores absolute paths. This job has no bench, only the
+          # checkout, so without a root to alias onto `coverage report` cannot re-parse the
+          # sources it must count statements from, and the gate can never return a verdict.
+          COVERAGE_SOURCE_ROOT: ${{ github.workspace }}
+          COVERAGE_PYTHON: python

@@ -1,0 +1,34 @@
+{
+	"branches": [
+		"version-15"
+	],
+	"plugins": [
+		"@semantic-release/commit-analyzer",
+		{
+			"preset": "angular",
+			"releaseRules": [
+				{
+					"breaking": true,
+					"release": false
+				}
+			]
+		},
+		"@semantic-release/release-notes-generator",
+		[
+			"@semantic-release/exec",
+			{
+				"prepareCmd": "sed -ir -E \"s/\\\"[0-9]+\\.[0-9]+\\.[0-9]+\\\"/\\\"${nextRelease.version}\\\"/\" cloud_file_storage/__init__.py"
+			}
+		],
+		[
+			"@semantic-release/git",
+			{
+				"assets": [
+					"cloud_file_storage/__init__.py"
+				],
+				"message": "chore(release): bumped to version ${nextRelease.version}\n\n${nextRelease.notes}"
+			}
+		],
+		"@semantic-release/github"
+	]
+}

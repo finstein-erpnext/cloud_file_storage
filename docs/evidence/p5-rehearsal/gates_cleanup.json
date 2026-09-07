@@ -1,0 +1,15 @@
+{
+  "campaign": "CFS-CAMP-0004",
+  "objects": 100020,
+  "batches": 101,
+  "convergence_ratio": 1.0,
+  "convergence_target": 0.999,
+  "convergence_pass": true,
+  "quarantined": 99862,
+  "delete_before_verify": 0,
+  "delete_before_verify_pass": true,
+  "counts": {
+    "Quarantined": 99862,
+    "Skipped": 158
+  }
+}

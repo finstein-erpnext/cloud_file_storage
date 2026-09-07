@@ -1,0 +1,182 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"cfs-health-header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Storage Health</b></span>\",\"col\":12}},{\"id\":\"cfs-card-verified\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Cloud Objects Verified\",\"col\":3}},{\"id\":\"cfs-card-pending\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Cloud Objects Awaiting Upload\",\"col\":3}},{\"id\":\"cfs-card-failed\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Cloud Objects Failed\",\"col\":3}},{\"id\":\"cfs-card-conflicts\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Open Migration Conflicts\",\"col\":3}},{\"id\":\"cfs-shortcut-header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Operate</b></span>\",\"col\":12}},{\"id\":\"cfs-shortcut-settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cloud Storage Settings\",\"col\":3}},{\"id\":\"cfs-shortcut-dashboard\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Migration Dashboard\",\"col\":3}},{\"id\":\"cfs-shortcut-campaign\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cloud Migration Campaign\",\"col\":3}},{\"id\":\"cfs-shortcut-conflict\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cloud Migration Conflict\",\"col\":3}},{\"id\":\"cfs-links-header\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Records</b></span>\",\"col\":12}},{\"id\":\"cfs-card-config\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}},{\"id\":\"cfs-card-objects\",\"type\":\"card\",\"data\":{\"card_name\":\"Objects\",\"col\":4}},{\"id\":\"cfs-card-migration\",\"type\":\"card\",\"data\":{\"card_name\":\"Migration\",\"col\":4}}]",
+ "creation": "2026-08-16 00:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "folder-normal",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Cloud Storage",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Storage Settings",
+   "link_count": 0,
+   "link_to": "Cloud Storage Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Objects",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Storage Object",
+   "link_count": 0,
+   "link_to": "Cloud Storage Object",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud File URL Alias",
+   "link_count": 0,
+   "link_to": "Cloud File URL Alias",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Reconcile Run",
+   "link_count": 0,
+   "link_to": "Cloud Reconcile Run",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Migration",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Migration Campaign",
+   "link_count": 0,
+   "link_to": "Cloud Migration Campaign",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Migration Batch",
+   "link_count": 0,
+   "link_to": "Cloud Migration Batch",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Migration Object",
+   "link_count": 0,
+   "link_to": "Cloud Migration Object",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Migration Conflict",
+   "link_count": 0,
+   "link_to": "Cloud Migration Conflict",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cloud Storage Audit Log",
+   "link_count": 0,
+   "link_to": "Cloud Storage Audit Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Storage",
+ "number_cards": [
+  {"label": "Cloud Objects Verified", "number_card_name": "Cloud Objects Verified"},
+  {"label": "Cloud Objects Awaiting Upload", "number_card_name": "Cloud Objects Awaiting Upload"},
+  {"label": "Cloud Objects Failed", "number_card_name": "Cloud Objects Failed"},
+  {"label": "Open Migration Conflicts", "number_card_name": "Open Migration Conflicts"}
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 50.0,
+ "shortcuts": [
+  {
+   "label": "Cloud Storage Settings",
+   "link_to": "Cloud Storage Settings",
+   "type": "DocType"
+  },
+  {
+   "label": "Migration Dashboard",
+   "link_to": "cloud-migration-dashboard",
+   "type": "Page"
+  },
+  {
+   "label": "Cloud Migration Campaign",
+   "link_to": "Cloud Migration Campaign",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "format": "{} open",
+   "label": "Cloud Migration Conflict",
+   "link_to": "Cloud Migration Conflict",
+   "stats_filter": "{\"status\": \"Open\"}",
+   "type": "DocType"
+  }
+ ],
+ "title": "Cloud Storage"
+}

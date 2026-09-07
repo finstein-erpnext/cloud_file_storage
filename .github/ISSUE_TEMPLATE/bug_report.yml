@@ -1,0 +1,166 @@
+name: Bug Report
+description: Report a bug encountered while using Cloud File Storage
+labels: ["bug"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, please check the following.
+
+        1. **Do not report a security vulnerability here.** This tracker is public. Read
+           [SECURITY.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/SECURITY.md)
+           and report privately.
+        2. **Redact before you paste.** No access keys, no secret keys, no presigned URLs, no
+           `site_config.json`, no customer data. A presigned URL is a live bearer token for the
+           object it points at. Placeholders are fine.
+        3. Search existing issues first — duplicates are closed and pointed at the original.
+        4. Only the tip of a supported line is fixed. `15.x` and `16.x` are supported;
+           `frappe_s3_attachment` 0.2.x and earlier are end of life. See
+           [docs/supported-versions.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/docs/supported-versions.md).
+        5. The six version/configuration questions below are what make a report reproducible.
+           An answer of "latest" to any of them is not one.
+
+  - type: textarea
+    id: bug-info
+    attributes:
+      label: Information about the bug
+      description: What happened, and what did you expect to happen instead?
+      placeholder: Please provide as much information as possible.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: version-line
+    attributes:
+      label: App version line
+      description: Which line is installed? `bench version` shows the app version; the major tracks the frappe major.
+      options:
+        - 15.x (version-15)
+        - 16.x (version-16)
+        - develop (unreleased)
+        - frappe_s3_attachment 0.2.x or earlier (end of life)
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: Exact app version
+      description: From `bench version`, or `cloud_file_storage/__init__.py` → `__version__`.
+      placeholder: "16.2.1"
+    validations:
+      required: true
+
+  - type: input
+    id: frappe-version
+    attributes:
+      label: Frappe version
+      description: From `bench version`. Include the branch if you run a checkout rather than a tag.
+      placeholder: "16.0.0 (version-16)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: python-version
+    attributes:
+      label: Python version
+      description: "`python --version` inside the bench env. The lines are disjoint: frappe v15 needs 3.10–3.13, v16 needs 3.14."
+      options:
+        - "3.10"
+        - "3.11"
+        - "3.12"
+        - "3.13"
+        - "3.14"
+        - Other (state it in the description)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: database
+    attributes:
+      label: Database
+      description: MariaDB is the only supported database. The Postgres branches in the source exist but are untested.
+      options:
+        - MariaDB
+        - PostgreSQL (unsupported)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: operation-mode
+    attributes:
+      label: Operation mode
+      description: "**Cloud Storage Settings** → _Operation Mode_."
+      options:
+        - LOCAL_ONLY
+        - DUAL_WRITE
+        - S3_PRIMARY_LOCAL_FALLBACK
+        - S3_ONLY
+        - Not applicable / not configured
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scratch-site
+    attributes:
+      label: Does it reproduce on a scratch site?
+      description: A fresh site with only this app installed. This is the single most useful line in the report — it separates a bug here from an interaction with your site's other apps or data.
+      options:
+        - Yes — reproduces on a fresh scratch site
+        - No — only on the affected site
+        - Not tried
+    validations:
+      required: true
+
+  - type: dropdown
+    id: object-store
+    attributes:
+      label: Object store
+      description: S3 semantics differ between providers; several bugs are provider-specific.
+      options:
+        - AWS S3
+        - MinIO
+        - Hetzner Object Storage
+        - Other S3-compatible (state which in the description)
+        - Not reached / not configured
+    validations:
+      required: false
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Numbered, from a clean state. If we cannot reproduce it, we cannot fix it.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output / stack trace / full error message
+      description: From the Error Log, the worker log, or the browser console. Redact credentials and presigned URLs. This is rendered as code automatically.
+      render: shell
+
+  - type: checkboxes
+    id: redaction
+    attributes:
+      label: Before submitting
+      options:
+        - label: I have removed all credentials, presigned URLs and customer data from this report
+          required: true
+        - label: This is not a security vulnerability (those go to SECURITY.md, privately)
+          required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow the [Code of Conduct](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

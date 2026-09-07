@@ -1,0 +1,435 @@
+{
+ "actions": [],
+ "creation": "2026-08-14 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "connection_section",
+  "bucket",
+  "region",
+  "endpoint_url",
+  "connection_column_break",
+  "addressing_style",
+  "key_prefix",
+  "test_connection",
+  "connection_status_html",
+  "credentials_section",
+  "use_default_credential_chain",
+  "access_key_id",
+  "secret_access_key",
+  "credentials_column_break",
+  "sse_mode",
+  "kms_key_id",
+  "storage_class",
+  "operation_section",
+  "operation_mode",
+  "fail_insert_on_s3_error",
+  "operation_column_break",
+  "cdn_base_url",
+  "public_presign_ttl",
+  "private_presign_ttl",
+  "inline_mimetype_prefixes",
+  "audit_public_fallback",
+  "cache_section",
+  "cache_max_size_mb",
+  "cache_column_break",
+  "cache_ttl_hours",
+  "cache_stats_html",
+  "rules_section",
+  "ignored_doctypes",
+  "transfer_section",
+  "multipart_threshold_mb",
+  "multipart_chunksize_mb",
+  "transfer_column_break",
+  "transfer_max_concurrency",
+  "retention_section",
+  "object_delete_grace_days",
+  "retention_column_break",
+  "restore_window_days",
+  "migration_section",
+  "migration_batch_size",
+  "migration_parallelism",
+  "migration_bandwidth_limit_mbps",
+  "migration_column_break",
+  "storage_health_section",
+  "storage_health_html",
+  "health_actions_column_break",
+  "refresh_storage_health",
+  "reconcile",
+  "migration_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "connection_section",
+   "fieldtype": "Section Break",
+   "label": "Connection"
+  },
+  {
+   "description": "Single private live bucket. Public delivery is served through CloudFront/OAC or presigned URLs, never through object ACLs.",
+   "fieldname": "bucket",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bucket",
+   "reqd": 1
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Region",
+   "reqd": 1
+  },
+  {
+   "description": "Leave blank for AWS. For Hetzner set for example: <b>https://nbg1.your-objectstorage.com</b>. Must be HTTPS unless the site runs with <b>allow_tests</b>.",
+   "fieldname": "endpoint_url",
+   "fieldtype": "Data",
+   "label": "Endpoint URL"
+  },
+  {
+   "fieldname": "connection_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "auto",
+   "description": "<b>auto</b> uses path-style addressing whenever an endpoint URL is set (most reliable for S3-compatible providers).",
+   "fieldname": "addressing_style",
+   "fieldtype": "Select",
+   "label": "Addressing Style",
+   "options": "auto\npath\nvirtual"
+  },
+  {
+   "description": "Prefix for every generated object key inside the bucket.",
+   "fieldname": "key_prefix",
+   "fieldtype": "Data",
+   "label": "Key Prefix"
+  },
+  {
+   "fieldname": "test_connection",
+   "fieldtype": "Button",
+   "label": "Test Connection",
+   "description": "Probes the bucket: HEAD, write, read back, encryption echo, clock skew, versioning."
+  },
+  {
+   "fieldname": "connection_status_html",
+   "fieldtype": "HTML",
+   "label": "Connection Status"
+  },
+  {
+   "bold": 1,
+   "fieldname": "credentials_section",
+   "fieldtype": "Section Break",
+   "label": "Credentials"
+  },
+  {
+   "default": "1",
+   "description": "Preferred. Resolve credentials through the boto3/IAM default chain instead of storing static keys.",
+   "fieldname": "use_default_credential_chain",
+   "fieldtype": "Check",
+   "label": "Use Default Credential Chain"
+  },
+  {
+   "depends_on": "eval:!doc.use_default_credential_chain",
+   "fieldname": "access_key_id",
+   "fieldtype": "Data",
+   "label": "Access Key ID",
+   "permlevel": 1,
+   "description": "Permission level 1: only roles with a level-1 DocPerm may read or write this. Prefer the default credential chain."
+  },
+  {
+   "depends_on": "eval:!doc.use_default_credential_chain",
+   "fieldname": "secret_access_key",
+   "fieldtype": "Password",
+   "label": "Secret Access Key",
+   "permlevel": 1,
+   "description": "Permission level 1. Stored in the Password field type, never returned to the client and never logged."
+  },
+  {
+   "fieldname": "credentials_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "SSE-S3",
+   "fieldname": "sse_mode",
+   "fieldtype": "Select",
+   "label": "Server Side Encryption",
+   "options": "\nSSE-S3\nSSE-KMS",
+   "description": "Leave blank only when the object store encrypts at rest itself (some S3-compatible providers reject SSE headers without a KMS backend)."
+  },
+  {
+   "depends_on": "eval:doc.sse_mode=='SSE-KMS'",
+   "fieldname": "kms_key_id",
+   "fieldtype": "Data",
+   "label": "KMS Key ID"
+  },
+  {
+   "default": "STANDARD",
+   "description": "Live objects must stay synchronously retrievable. Archive classes are rejected here and belong on the backup bucket only.",
+   "fieldname": "storage_class",
+   "fieldtype": "Select",
+   "label": "Storage Class",
+   "options": "STANDARD\nSTANDARD_IA\nINTELLIGENT_TIERING",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "operation_section",
+   "fieldtype": "Section Break",
+   "label": "Operation Mode & Serving"
+  },
+  {
+   "default": "LOCAL_ONLY",
+   "description": "S3_PRIMARY_LOCAL_FALLBACK is the recommended production mode.",
+   "fieldname": "operation_mode",
+   "fieldtype": "Select",
+   "label": "Operation Mode",
+   "options": "LOCAL_ONLY\nDUAL_WRITE\nS3_PRIMARY_LOCAL_FALLBACK\nS3_ONLY",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Fail the File insert when the object store is unreachable instead of degrading per operation mode.",
+   "fieldname": "fail_insert_on_s3_error",
+   "fieldtype": "Check",
+   "label": "Fail Insert on S3 Error"
+  },
+  {
+   "fieldname": "operation_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "CloudFront (or equivalent) base URL scoped to the public prefix.",
+   "fieldname": "cdn_base_url",
+   "fieldtype": "Data",
+   "label": "CDN Base URL"
+  },
+  {
+   "default": "3600",
+   "description": "in seconds",
+   "fieldname": "public_presign_ttl",
+   "fieldtype": "Int",
+   "label": "Public Presign TTL",
+   "non_negative": 1
+  },
+  {
+   "default": "300",
+   "description": "in seconds",
+   "fieldname": "private_presign_ttl",
+   "fieldtype": "Int",
+   "label": "Private Presign TTL",
+   "non_negative": 1
+  },
+  {
+   "default": "image/\napplication/pdf",
+   "description": "One MIME type prefix per line. HTML, SVG and XML are always served as attachments regardless of this list.",
+   "fieldname": "inline_mimetype_prefixes",
+   "fieldtype": "Small Text",
+   "label": "Inline MIME Type Prefixes"
+  },
+  {
+   "default": "0",
+   "fieldname": "audit_public_fallback",
+   "fieldtype": "Check",
+   "label": "Audit Public Fallback"
+  },
+  {
+   "bold": 1,
+   "fieldname": "cache_section",
+   "fieldtype": "Section Break",
+   "label": "Local Cache"
+  },
+  {
+   "default": "5120",
+   "fieldname": "cache_max_size_mb",
+   "fieldtype": "Int",
+   "label": "Cache Max Size (MB)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "cache_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "72",
+   "fieldname": "cache_ttl_hours",
+   "fieldtype": "Int",
+   "label": "Cache TTL (Hours)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "cache_stats_html",
+   "fieldtype": "HTML",
+   "label": "Cache Stats"
+  },
+  {
+   "bold": 1,
+   "fieldname": "rules_section",
+   "fieldtype": "Section Break",
+   "label": "Rules"
+  },
+  {
+   "description": "Attachments of these parent DocTypes stay on local disk (operational, short-lived bytes).",
+   "fieldname": "ignored_doctypes",
+   "fieldtype": "Table",
+   "label": "Ignored DocTypes",
+   "options": "Cloud Storage Ignored DocType"
+  },
+  {
+   "bold": 1,
+   "fieldname": "transfer_section",
+   "fieldtype": "Section Break",
+   "label": "Transfer"
+  },
+  {
+   "default": "64",
+   "fieldname": "multipart_threshold_mb",
+   "fieldtype": "Int",
+   "label": "Multipart Threshold (MB)",
+   "non_negative": 1
+  },
+  {
+   "default": "16",
+   "fieldname": "multipart_chunksize_mb",
+   "fieldtype": "Int",
+   "label": "Multipart Chunk Size (MB)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "transfer_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "4",
+   "fieldname": "transfer_max_concurrency",
+   "fieldtype": "Int",
+   "label": "Transfer Max Concurrency",
+   "non_negative": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "retention_section",
+   "fieldtype": "Section Break",
+   "label": "Retention"
+  },
+  {
+   "default": "30",
+   "description": "Grace period before a dereferenced object is physically deleted by garbage collection. This IS the attachment recovery window (PLAN.md \u00a7H item 1), so it must be at least as long as Restore Window (Days).",
+   "fieldname": "object_delete_grace_days",
+   "fieldtype": "Int",
+   "label": "Object Delete Grace (Days)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "retention_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "30",
+   "description": "Attachment recovery window. Must be less than or equal to the object delete grace period, backed by bucket versioning.",
+   "fieldname": "restore_window_days",
+   "fieldtype": "Int",
+   "label": "Restore Window (Days)",
+   "non_negative": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "migration_section",
+   "fieldtype": "Section Break",
+   "label": "Migration"
+  },
+  {
+   "default": "1000",
+   "fieldname": "migration_batch_size",
+   "fieldtype": "Int",
+   "label": "Migration Batch Size",
+   "non_negative": 1
+  },
+  {
+   "default": "2",
+   "fieldname": "migration_parallelism",
+   "fieldtype": "Int",
+   "label": "Migration Parallelism",
+   "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "0 disables the bandwidth cap.",
+   "fieldname": "migration_bandwidth_limit_mbps",
+   "fieldtype": "Int",
+   "label": "Migration Bandwidth Limit (Mbps)",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "migration_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "storage_health_section",
+   "fieldtype": "Section Break",
+   "label": "Storage Health",
+   "bold": 1
+  },
+  {
+   "fieldname": "storage_health_html",
+   "fieldtype": "HTML",
+   "label": "Storage Health"
+  },
+  {
+   "fieldname": "health_actions_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "refresh_storage_health",
+   "fieldtype": "Button",
+   "label": "Refresh Storage Health"
+  },
+  {
+   "fieldname": "reconcile",
+   "fieldtype": "Button",
+   "label": "Reconcile",
+   "description": "Three-way diff between the bucket, the object rows and the File rows. System Manager only."
+  },
+  {
+   "fieldname": "migration_html",
+   "fieldtype": "HTML",
+   "label": "Migration"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-14 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Storage Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

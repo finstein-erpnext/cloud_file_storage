@@ -1,0 +1,32 @@
+# Code owners for cloud_file_storage.
+#
+# GitHub requests a review from the owner of every path a pull request touches. Ownership here
+# is deliberately flat — one maintainer owns the repository — so the later entries exist to
+# state which paths are load-bearing, not to route to a different person.
+#
+# Syntax: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# Last matching pattern wins.
+
+# Everything.
+*                                       @RamachandranMD
+
+# Governance, licence and the invariants every review is measured against.
+/docs/INVARIANTS.md                              @RamachandranMD
+/SECURITY.md                            @RamachandranMD
+/CODE_OF_CONDUCT.md                     @RamachandranMD
+/CONTRIBUTING.md                        @RamachandranMD
+/license.txt                            @RamachandranMD
+
+# Release machinery. A change here can tag or publish; it is never routine.
+/.releaserc                             @RamachandranMD
+/.github/                               @RamachandranMD
+
+# Binding architecture, decision records and release gates.
+/docs/PLAN.md                           @RamachandranMD
+/docs/adr/                              @RamachandranMD
+/docs/ACCEPTANCE_GATES.md               @RamachandranMD
+/docs/BRANCHING.md                      @RamachandranMD
+/docs/security/                         @RamachandranMD
+
+# The compatibility contract C1-C19: what a Frappe site is entitled to expect from File.
+/cloud_file_storage/tests/contract/     @RamachandranMD

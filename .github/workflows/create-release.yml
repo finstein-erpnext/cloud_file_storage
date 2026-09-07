@@ -1,0 +1,49 @@
+# Semantic release for a stable version line.
+#
+# Deliberately shared by every version branch rather than duplicated per branch: the branch
+# that may be released is decided by `.releaserc`, which lists exactly one branch and differs
+# per version line. semantic-release refuses to release from a branch its own config does not
+# name, so this single file cannot release the wrong line.
+name: Create release
+
+on:
+  push:
+    branches:
+      - version-15
+      - version-16
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    # Required by tests/test_ci_workflow_contract.py: every job bounds itself. A release that
+    # hangs holds the version line, so this is deliberately tight.
+    timeout-minutes: 20
+    steps:
+      - name: Checkout entire repository
+        uses: actions/checkout@v6
+        with:
+          # semantic-release reads the whole tag history to decide the next version.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Setup dependencies
+        run: npm install @semantic-release/git @semantic-release/exec --no-save
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GIT_AUTHOR_NAME: "cloud-file-storage-bot"
+          GIT_AUTHOR_EMAIL: "noreply@users.noreply.github.com"
+          GIT_COMMITTER_NAME: "cloud-file-storage-bot"
+          GIT_COMMITTER_EMAIL: "noreply@users.noreply.github.com"
+        run: npx semantic-release

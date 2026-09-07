@@ -1,0 +1,32 @@
+# Configuration for probot-stale — https://github.com/probot/stale
+#
+# Pull requests only. Issues are never auto-closed here: an unanswered bug report about
+# attachment loss or a permission bypass is a maintainer backlog problem, and closing it for
+# inactivity destroys the report rather than the backlog.
+
+# Label to use when marking as stale.
+staleLabel: inactive
+
+# Limit the number of actions per hour, from 1-30.
+limitPerRun: 10
+
+# Ignore anything in a project or a milestone — it is already tracked somewhere.
+exemptProjects: true
+exemptMilestones: true
+
+pulls:
+  daysUntilStale: 21
+  daysUntilClose: 7
+  exemptLabels:
+    - hotfix
+    - security
+    - backport
+    - blocked
+  markComment: >
+    This pull request has been marked inactive because it has had no activity for three
+    weeks. It will be closed in seven days unless something happens here — a comment is
+    enough to keep it open. If it is closed you can reopen it whenever you are ready;
+    nothing is lost. Thank you for contributing.
+
+# Never touch issues.
+only: pulls

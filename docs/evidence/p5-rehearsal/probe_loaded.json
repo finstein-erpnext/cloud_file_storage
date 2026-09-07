@@ -1,0 +1,14 @@
+{
+  "samples": 10,
+  "latency_seconds": {
+    "min": 0.3054,
+    "median": 0.4102,
+    "max": 0.4653
+  },
+  "queue_depths": {
+    "short": 0,
+    "default": 0,
+    "long": 3,
+    "cloud_migration": 0
+  }
+}

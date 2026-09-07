@@ -1,0 +1,28 @@
+# Applies path-based labels to pull requests, from .github/labeler.yml.
+#
+# Without this workflow that config file is inert -- it is data, not a trigger. The labels it
+# applies feed release-note grouping (.github/release.yml) and the stale-bot exemptions.
+name: Labeler
+
+on:
+  # `pull_request_target` so the workflow runs with repository permissions and can label PRs
+  # from forks. It checks out nothing and runs no code from the PR, which is what makes that
+  # safe here.
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    name: Apply path labels
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Label
+        uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          sync-labels: false

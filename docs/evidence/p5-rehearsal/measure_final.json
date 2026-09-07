@@ -1,0 +1,230 @@
+{
+  "campaign": "CFS-CAMP-0004",
+  "measured": {
+    "measured_at": "2026-08-15T21:47:18.041260",
+    "tables": {
+      "Cloud Migration Object": {
+        "doctype": "Cloud Migration Object",
+        "rows": 100020,
+        "data_bytes": 90161152,
+        "index_bytes": 172244992,
+        "total_bytes": 262406144,
+        "bytes_per_row": 2623.54,
+        "index_bytes_per_row": 1722.11
+      },
+      "Cloud Migration File Ref": {
+        "doctype": "Cloud Migration File Ref",
+        "rows": 100142,
+        "data_bytes": 50085888,
+        "index_bytes": 54935552,
+        "total_bytes": 105021440,
+        "bytes_per_row": 1048.73,
+        "index_bytes_per_row": 548.58
+      },
+      "Cloud Migration Conflict": {
+        "doctype": "Cloud Migration Conflict",
+        "rows": 155,
+        "data_bytes": 114688,
+        "index_bytes": 114688,
+        "total_bytes": 229376,
+        "bytes_per_row": 1479.85,
+        "index_bytes_per_row": 739.92
+      },
+      "Cloud Storage Audit Log": {
+        "doctype": "Cloud Storage Audit Log",
+        "rows": 100022,
+        "data_bytes": 36257792,
+        "index_bytes": 19988480,
+        "total_bytes": 56246272,
+        "bytes_per_row": 562.34,
+        "index_bytes_per_row": 199.84
+      }
+    },
+    "process": {
+      "peak_rss_bytes": 57147392,
+      "rchar": 7476253,
+      "wchar": 951,
+      "read_bytes": 0,
+      "write_bytes": 0
+    },
+    "redis": {
+      "queue_depth": 0,
+      "redis_used_memory_bytes": 1124120,
+      "redis_peak_memory_bytes": 1602704
+    },
+    "disk": {
+      "site_path": "/home/user/v15/sites/cfs-rehearsal.local",
+      "disk_total_bytes": 1081101176832,
+      "disk_used_bytes": 96036544512,
+      "disk_free_bytes": 930072276992,
+      "db_datadir": "/home/user/cfs-scratch-mariadb/data/",
+      "db_disk_free_bytes": 930072276992,
+      "db_disk_total_bytes": 1081101176832,
+      "innodb_file_per_table": true
+    },
+    "backup": {
+      "present": true,
+      "path": "./cfs-rehearsal.local/private/backups/20260815_180021-cfs-rehearsal_local-database.sql.gz",
+      "size_bytes": 24830065,
+      "taken_at": "2026-08-15T18:00:25.856158",
+      "age_hours": 3.78
+    },
+    "campaign": {
+      "name": "CFS-CAMP-0004",
+      "objects": 100020,
+      "refs": 100142,
+      "conflicts": 155,
+      "audit_rows": 100022
+    }
+  },
+  "projected": {
+    "target_rows": 1200000,
+    "refs_per_object": 1.0012,
+    "conflicts_per_object": 0.00155,
+    "audit_rows_per_object": 1.00002,
+    "Cloud Migration Object": {
+      "rows": 1200000,
+      "total_bytes": 3148248000,
+      "index_bytes": 2066531999
+    },
+    "Cloud Migration File Ref": {
+      "rows": 1201463,
+      "total_bytes": 1260011033,
+      "index_bytes": 659098960
+    },
+    "Cloud Migration Conflict": {
+      "rows": 1859,
+      "total_bytes": 2751970,
+      "index_bytes": 1375976
+    },
+    "Cloud Storage Audit Log": {
+      "rows": 1200023,
+      "total_bytes": 674821493,
+      "index_bytes": 239812795
+    },
+    "total_bytes": 5085832496,
+    "total_index_bytes": 2966819730
+  },
+  "checks": [
+    {
+      "check": "database_free_space",
+      "passed": true,
+      "required_bytes": 10171664992,
+      "free_bytes": 930072276992,
+      "detail": "projected snapshot growth 5085832496 bytes \u00d7 safety factor 2.0"
+    },
+    {
+      "check": "innodb_file_per_table",
+      "passed": true,
+      "detail": "a shared tablespace never returns the space a snapshot purge frees"
+    },
+    {
+      "check": "recent_database_backup",
+      "passed": true,
+      "age_hours": 3.78,
+      "detail": "the snapshot tables are droppable, but VERIFY's link writes to tabFile are not"
+    },
+    {
+      "check": "migration_queue_reachable",
+      "passed": true,
+      "queue_depth": 0,
+      "detail": "queue reachable"
+    }
+  ],
+  "convergence": {
+    "in_scope": 99862,
+    "verified": 99862,
+    "skipped": 158,
+    "ratio": 1.0,
+    "counts": {
+      "Skipped": 158,
+      "Verified": 99862
+    }
+  },
+  "summary": {
+    "campaign": "CFS-CAMP-0004",
+    "by_status": [
+      {
+        "status": "Skipped",
+        "objects": 158,
+        "bytes": 34188.0
+      },
+      {
+        "status": "Verified",
+        "objects": 99862,
+        "bytes": 25972261.0
+      }
+    ],
+    "by_classification": [
+      {
+        "classification": "healthy_unique",
+        "objects": 99653
+      },
+      {
+        "classification": "legacy_fork",
+        "objects": 39
+      },
+      {
+        "classification": "missing_physical",
+        "objects": 66
+      },
+      {
+        "classification": "orphan_physical",
+        "objects": 20
+      },
+      {
+        "classification": "shared_content",
+        "objects": 100
+      },
+      {
+        "classification": "shared_url",
+        "objects": 142
+      }
+    ],
+    "by_conflict": [
+      {
+        "conflict_type": "adoption_failed",
+        "status": "Skipped",
+        "conflicts": 39
+      },
+      {
+        "conflict_type": "ambiguous_privacy",
+        "status": "Resolved",
+        "conflicts": 50
+      },
+      {
+        "conflict_type": "missing_physical",
+        "status": "Skipped",
+        "conflicts": 66
+      }
+    ]
+  },
+  "batches": 101,
+  "snapshot": {
+    "name": "CFS-CAMP-0004",
+    "title": "P5 100k rehearsal",
+    "status": "Running",
+    "active_phase": "UPLOAD",
+    "control_flag": null,
+    "total_objects": 100020,
+    "total_files": 100142,
+    "objects_pending": 0,
+    "objects_uploading": 0,
+    "objects_uploaded": 0,
+    "objects_verified": 99862,
+    "objects_cleaned": 0,
+    "objects_failed": 0,
+    "objects_conflict": 0,
+    "objects_skipped": 158,
+    "objects_adopted": 0,
+    "objects_dedup_reused": 0,
+    "bytes_total": 26006449,
+    "bytes_uploaded": 25972261,
+    "bytes_verified": 25972261,
+    "started_at": "2026-08-15 17:46:41.797331",
+    "completed_at": null,
+    "progress_pct": 100.0,
+    "remaining": 0,
+    "open_blockers": 0
+  }
+}

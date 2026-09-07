@@ -1,0 +1,169 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "ref_section",
+  "campaign",
+  "migration_object",
+  "file",
+  "file_name",
+  "file_url",
+  "ref_column_break",
+  "content_hash",
+  "is_private",
+  "linked",
+  "url_rewritten",
+  "skip_reason",
+  "parent_section",
+  "attached_to_doctype",
+  "attached_to_name",
+  "parent_column_break",
+  "attached_to_field",
+  "ignored_parent"
+ ],
+ "fields": [
+  {
+   "fieldname": "ref_section",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "campaign",
+   "fieldtype": "Link",
+   "label": "Campaign",
+   "options": "Cloud Migration Campaign",
+   "reqd": 1
+  },
+  {
+   "fieldname": "migration_object",
+   "fieldtype": "Link",
+   "label": "Migration Object",
+   "options": "Cloud Migration Object",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "file",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "File",
+   "options": "File",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "file_name",
+   "fieldtype": "Data",
+   "label": "File Name"
+  },
+  {
+   "description": "The URL recorded at scan time. The A26 guard compares tabFile.file_url against this.",
+   "fieldname": "file_url",
+   "fieldtype": "Small Text",
+   "label": "File Url"
+  },
+  {
+   "fieldname": "ref_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "content_hash",
+   "fieldtype": "Data",
+   "label": "Content Hash",
+   "length": 32
+  },
+  {
+   "default": "0",
+   "fieldname": "is_private",
+   "fieldtype": "Check",
+   "label": "Is Private"
+  },
+  {
+   "default": "0",
+   "fieldname": "linked",
+   "fieldtype": "Check",
+   "label": "Linked"
+  },
+  {
+   "default": "0",
+   "fieldname": "url_rewritten",
+   "fieldtype": "Check",
+   "label": "Url Rewritten"
+  },
+  {
+   "fieldname": "skip_reason",
+   "fieldtype": "Data",
+   "label": "Skip Reason"
+  },
+  {
+   "fieldname": "parent_section",
+   "fieldtype": "Section Break",
+   "label": "Attached To"
+  },
+  {
+   "fieldname": "attached_to_doctype",
+   "fieldtype": "Data",
+   "label": "Attached To Doctype"
+  },
+  {
+   "fieldname": "attached_to_name",
+   "fieldtype": "Data",
+   "label": "Attached To Name"
+  },
+  {
+   "fieldname": "parent_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attached_to_field",
+   "fieldtype": "Data",
+   "label": "Attached To Field"
+  },
+  {
+   "default": "0",
+   "description": "A17 \u2014 the parent doctype is LOCAL_OPERATIONAL (Data Import / Prepared Report / Package Import).",
+   "fieldname": "ignored_parent",
+   "fieldtype": "Check",
+   "label": "Ignored Parent"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Migration File Ref",
+ "naming_rule": "",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-08-15 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "audit_section",
+  "action",
+  "actor",
+  "campaign",
+  "audit_column_break",
+  "migration_object",
+  "file",
+  "cloud_storage_object",
+  "detail_section",
+  "details"
+ ],
+ "fields": [
+  {
+   "fieldname": "audit_section",
+   "fieldtype": "Section Break",
+   "label": "Audit"
+  },
+  {
+   "fieldname": "action",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Action",
+   "options": "\nlocal_quarantine\nlocal_delete\nquarantine_purge\nurl_rewrite\nfile_link\nremote_adopt\nconflict_action\ncampaign_transition\nlink_skipped\ncleanup_refused\nbackup_lifecycle_applied\nbackup_presign_issued",
+   "search_index": 1
+  },
+  {
+   "fieldname": "actor",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Actor"
+  },
+  {
+   "fieldname": "campaign",
+   "fieldtype": "Link",
+   "label": "Campaign",
+   "options": "Cloud Migration Campaign",
+   "search_index": 1
+  },
+  {
+   "fieldname": "audit_column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "migration_object",
+   "fieldtype": "Link",
+   "label": "Migration Object",
+   "options": "Cloud Migration Object"
+  },
+  {
+   "fieldname": "file",
+   "fieldtype": "Link",
+   "label": "File",
+   "options": "File"
+  },
+  {
+   "fieldname": "cloud_storage_object",
+   "fieldtype": "Link",
+   "label": "Cloud Storage Object",
+   "options": "Cloud Storage Object"
+  },
+  {
+   "fieldname": "detail_section",
+   "fieldtype": "Section Break",
+   "label": "Detail"
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Code",
+   "label": "Details",
+   "options": "JSON"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-15 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Cloud File Storage",
+ "name": "Cloud Storage Audit Log",
+ "naming_rule": "",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Cloud Storage Manager"
+  }
+ ],
+ "quick_entry": 0,
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

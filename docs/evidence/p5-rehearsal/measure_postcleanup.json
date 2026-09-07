@@ -1,0 +1,250 @@
+{
+  "campaign": "CFS-CAMP-0004",
+  "measured": {
+    "measured_at": "2026-08-15T23:14:22.143167",
+    "tables": {
+      "Cloud Migration Object": {
+        "doctype": "Cloud Migration Object",
+        "rows": 100020,
+        "data_bytes": 171819008,
+        "index_bytes": 167067648,
+        "total_bytes": 338886656,
+        "bytes_per_row": 3388.19,
+        "index_bytes_per_row": 1670.34
+      },
+      "Cloud Migration File Ref": {
+        "doctype": "Cloud Migration File Ref",
+        "rows": 100142,
+        "data_bytes": 90669056,
+        "index_bytes": 78970880,
+        "total_bytes": 169639936,
+        "bytes_per_row": 1693.99,
+        "index_bytes_per_row": 788.59
+      },
+      "Cloud Migration Conflict": {
+        "doctype": "Cloud Migration Conflict",
+        "rows": 155,
+        "data_bytes": 114688,
+        "index_bytes": 114688,
+        "total_bytes": 229376,
+        "bytes_per_row": 1479.85,
+        "index_bytes_per_row": 739.92
+      },
+      "Cloud Storage Audit Log": {
+        "doctype": "Cloud Storage Audit Log",
+        "rows": 199888,
+        "data_bytes": 113999872,
+        "index_bytes": 40026112,
+        "total_bytes": 154025984,
+        "bytes_per_row": 770.56,
+        "index_bytes_per_row": 200.24
+      },
+      "Cloud Storage Object": {
+        "doctype": "Cloud Storage Object",
+        "rows": 99764,
+        "data_bytes": 90750976,
+        "index_bytes": 131072000,
+        "total_bytes": 221822976,
+        "bytes_per_row": 2223.48,
+        "index_bytes_per_row": 1313.82
+      }
+    },
+    "process": {
+      "peak_rss_bytes": 57069568,
+      "rchar": 7513218,
+      "wchar": 951,
+      "read_bytes": 57344,
+      "write_bytes": 0
+    },
+    "redis": {
+      "queue_depth": 0,
+      "redis_used_memory_bytes": 898472,
+      "redis_peak_memory_bytes": 1671760
+    },
+    "disk": {
+      "site_path": "/home/user/v15/sites/cfs-rehearsal.local",
+      "disk_total_bytes": 1081101176832,
+      "disk_used_bytes": 96560984064,
+      "disk_free_bytes": 929547837440,
+      "db_datadir": "/home/user/cfs-scratch-mariadb/data/",
+      "db_disk_free_bytes": 929547837440,
+      "db_disk_total_bytes": 1081101176832,
+      "innodb_file_per_table": true
+    },
+    "backup": {
+      "present": true,
+      "path": "./cfs-rehearsal.local/private/backups/20260815_180021-cfs-rehearsal_local-database.sql.gz",
+      "size_bytes": 24830065,
+      "taken_at": "2026-08-15T18:00:25.856158",
+      "age_hours": 5.23
+    },
+    "campaign": {
+      "name": "CFS-CAMP-0004",
+      "objects": 100020,
+      "refs": 100142,
+      "conflicts": 155,
+      "audit_rows": 199888
+    }
+  },
+  "projected": {
+    "target_rows": 1200000,
+    "Cloud Migration Object": {
+      "rows": 1200000,
+      "rows_per_object": 1.0,
+      "total_bytes": 4065828000,
+      "index_bytes": 2004408000
+    },
+    "Cloud Migration File Ref": {
+      "rows": 1201463,
+      "rows_per_object": 1.00122,
+      "total_bytes": 2035267505,
+      "index_bytes": 947462264
+    },
+    "Cloud Migration Conflict": {
+      "rows": 1859,
+      "rows_per_object": 0.00155,
+      "total_bytes": 2751970,
+      "index_bytes": 1375976
+    },
+    "Cloud Storage Audit Log": {
+      "rows": 2398176,
+      "rows_per_object": 1.99848,
+      "total_bytes": 1847938779,
+      "index_bytes": 480210835
+    },
+    "Cloud Storage Object": {
+      "rows": 1196928,
+      "rows_per_object": 0.997441,
+      "total_bytes": 2661346835,
+      "index_bytes": 1572548752
+    },
+    "refs_per_object": 1.00122,
+    "conflicts_per_object": 0.00155,
+    "audit_rows_per_object": 1.99848,
+    "cloud_objects_per_object": 0.997441,
+    "total_bytes": 10613133089,
+    "total_index_bytes": 5006005827
+  },
+  "checks": [
+    {
+      "check": "database_free_space",
+      "passed": true,
+      "required_bytes": 21226266178,
+      "free_bytes": 929547837440,
+      "detail": "projected snapshot growth 10613133089 bytes \u00d7 safety factor 2.0"
+    },
+    {
+      "check": "innodb_file_per_table",
+      "passed": true,
+      "detail": "a shared tablespace never returns the space a snapshot purge frees"
+    },
+    {
+      "check": "recent_database_backup",
+      "passed": true,
+      "age_hours": 5.23,
+      "detail": "the snapshot tables are droppable, but VERIFY's link writes to tabFile are not"
+    },
+    {
+      "check": "migration_queue_reachable",
+      "passed": true,
+      "queue_depth": 0,
+      "detail": "queue reachable"
+    }
+  ],
+  "convergence": {
+    "in_scope": 99862,
+    "verified": 99862,
+    "skipped": 158,
+    "ratio": 1.0,
+    "counts": {
+      "Quarantined": 99862,
+      "Skipped": 158
+    }
+  },
+  "summary": {
+    "campaign": "CFS-CAMP-0004",
+    "by_status": [
+      {
+        "status": "Quarantined",
+        "objects": 99862,
+        "bytes": 25972261.0
+      },
+      {
+        "status": "Skipped",
+        "objects": 158,
+        "bytes": 34188.0
+      }
+    ],
+    "by_classification": [
+      {
+        "classification": "healthy_unique",
+        "objects": 99653
+      },
+      {
+        "classification": "legacy_fork",
+        "objects": 39
+      },
+      {
+        "classification": "missing_physical",
+        "objects": 66
+      },
+      {
+        "classification": "orphan_physical",
+        "objects": 20
+      },
+      {
+        "classification": "shared_content",
+        "objects": 100
+      },
+      {
+        "classification": "shared_url",
+        "objects": 142
+      }
+    ],
+    "by_conflict": [
+      {
+        "conflict_type": "adoption_failed",
+        "status": "Skipped",
+        "conflicts": 39
+      },
+      {
+        "conflict_type": "ambiguous_privacy",
+        "status": "Resolved",
+        "conflicts": 50
+      },
+      {
+        "conflict_type": "missing_physical",
+        "status": "Skipped",
+        "conflicts": 66
+      }
+    ]
+  },
+  "batches": 101,
+  "snapshot": {
+    "name": "CFS-CAMP-0004",
+    "title": "P5 100k rehearsal",
+    "status": "Completed",
+    "active_phase": null,
+    "control_flag": null,
+    "total_objects": 100020,
+    "total_files": 100142,
+    "objects_pending": 0,
+    "objects_uploading": 0,
+    "objects_uploaded": 0,
+    "objects_verified": 0,
+    "objects_cleaned": 99862,
+    "objects_failed": 0,
+    "objects_conflict": 0,
+    "objects_skipped": 158,
+    "objects_adopted": 0,
+    "objects_dedup_reused": 0,
+    "bytes_total": 26006449,
+    "bytes_uploaded": 25972261,
+    "bytes_verified": 25972261,
+    "started_at": "2026-08-15 17:46:41.797331",
+    "completed_at": "2026-08-15 23:02:03.795826",
+    "progress_pct": 100.0,
+    "remaining": 0,
+    "open_blockers": 0
+  }
+}

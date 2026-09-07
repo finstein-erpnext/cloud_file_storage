@@ -1,0 +1,53 @@
+name: CodeQL
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+      - version-15
+      - feat/enterprise-cloud-storage-v15
+      - "phase/**"
+  pull_request:
+    branches:
+      - main
+      - develop
+      - version-15
+      - feat/enterprise-cloud-storage-v15
+  schedule:
+    - cron: "0 3 * * 1"
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    # Sits exactly on the 10..60 band the contract test enforces, deliberately: CodeQL is the
+    # slowest job here and has no headroom left. If it ever legitimately needs more, the band
+    # moves and that is a decision to argue for, not a number to bump quietly.
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - python
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
