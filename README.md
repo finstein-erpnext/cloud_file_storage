@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="cloud_file_storage/public/images/cloud_file_storage_logo.png" alt="Cloud File Storage" width="420">
+
 <h1>Cloud File Storage</h1>
 
 S3-compatible object storage for Frappe attachments — uploads, downloads, serving,

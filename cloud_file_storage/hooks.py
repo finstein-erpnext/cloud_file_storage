@@ -5,6 +5,9 @@ app_title = "Cloud File Storage"
 app_publisher = "Finstein"
 app_description = "Enterprise cloud storage for Frappe attachments"
 app_icon = "octicon octicon-file-directory"
+#: Served by frappe from `cloud_file_storage/public/` as /assets/<app>/..., so the Desk
+#: navbar and the app switcher show the app's own mark rather than the generic octicon.
+app_logo_url = "/assets/cloud_file_storage/images/cloud_file_storage_logo.png"
 app_color = "grey"
 app_email = "prabakaran.b@finstein.ai"
 app_license = "MIT"
