@@ -104,6 +104,7 @@ def legacy_ignored_rows() -> tuple[str, ...]:
 	"""
 	return (LEGACY_SEEDED_IGNORED_ROW, unseeded_ignored_row())
 
+
 #: The fork's key shape: `{folder_name}/{YYYY}/{MM}/{DD}/{doctype}/{rand}_{filename}`.
 NEW_GEN_KEY = "attachments/2021/07/14/Sales Invoice/2f9a1c_invoice.txt"
 OLD_GEN_KEY = "attachments/2019/03/02/Purchase Invoice/91bd77_bill.txt"

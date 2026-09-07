@@ -335,7 +335,6 @@ class TestTheWorkflowAndTheGateAgree(unittest.TestCase):
 		cls.workflow = yaml.safe_load((REPO_ROOT / ".github" / "workflows" / "ci.yml").read_text())
 		cls.jobs = cls.workflow["jobs"]
 
-
 	def _matrix_refs(self):
 		"""Every frappe ref the `tests` job runs, from either matrix shape.
 
