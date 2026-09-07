@@ -12,7 +12,7 @@
 # Re-running is safe: an existing label is updated to the colour/description below.
 set -euo pipefail
 
-REPO="${REPO:-RamachandranMD/cloud_file_storage}"
+REPO="${REPO:-finstein-erpnext/cloud_file_storage}"
 
 create() {  # name colour description
 	if gh label create "$1" --repo "$REPO" --color "$2" --description "$3" 2>/dev/null; then

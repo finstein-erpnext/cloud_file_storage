@@ -7,9 +7,9 @@
 S3-compatible object storage for Frappe attachments — uploads, downloads, serving,
 migration and lifecycle, for Frappe **v15 and v16**.
 
-[![CI](https://github.com/RamachandranMD/cloud_file_storage/actions/workflows/ci.yml/badge.svg)](https://github.com/RamachandranMD/cloud_file_storage/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/RamachandranMD/cloud_file_storage/actions/workflows/codeql.yml/badge.svg)](https://github.com/RamachandranMD/cloud_file_storage/actions/workflows/codeql.yml)
-[![Linters](https://github.com/RamachandranMD/cloud_file_storage/actions/workflows/linter.yml/badge.svg)](https://github.com/RamachandranMD/cloud_file_storage/actions/workflows/linter.yml)
+[![CI](https://github.com/finstein-erpnext/cloud_file_storage/actions/workflows/ci.yml/badge.svg)](https://github.com/finstein-erpnext/cloud_file_storage/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/finstein-erpnext/cloud_file_storage/actions/workflows/codeql.yml/badge.svg)](https://github.com/finstein-erpnext/cloud_file_storage/actions/workflows/codeql.yml)
+[![Linters](https://github.com/finstein-erpnext/cloud_file_storage/actions/workflows/linter.yml/badge.svg)](https://github.com/finstein-erpnext/cloud_file_storage/actions/workflows/linter.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](license.txt)
 [![frappe](https://img.shields.io/badge/frappe-v15%20%7C%20v16-success.svg)](docs/supported-versions.md)
 [![python](https://img.shields.io/badge/python-3.10--3.13%20%7C%203.14-success.svg)](docs/supported-versions.md)
@@ -88,35 +88,13 @@ Releases up to and including `1.0.0` predate this scheme and are Frappe v15 only
 
 ## Installation
 
-Pick the branch that matches your bench's Frappe major. **Do this deliberately** — see the
-warning below.
+Two release lines, one per Frappe major. Pick the branch that matches your bench:
+`version-15` for Frappe v15 (Python 3.10-3.13), `version-16` for Frappe v16 (Python 3.14).
 
-**Frappe v15 bench** (Python 3.10–3.13):
-
-```bash
-bench get-app --branch version-15 https://github.com/RamachandranMD/cloud_file_storage
-bench --site <site> install-app cloud_file_storage
-```
-
-**Frappe v16 bench** (Python 3.14):
-
-```bash
-bench get-app --branch version-16 https://github.com/RamachandranMD/cloud_file_storage
-bench --site <site> install-app cloud_file_storage
-```
-
-> **The Frappe dependency declaration is advisory.** The app declares its supported Frappe
-> range under `[tool.bench.frappe-dependencies]` in `pyproject.toml`, but bench treats a
-> mismatch as a **warning and installs anyway**. Nothing stops you putting the `version-15` app
-> on a v16 bench; you get a warning in the install output and a broken app afterwards. Choose
-> the branch yourself — do not rely on the tool to choose it for you.
+Step-by-step instructions are in **[docs/installation.md](docs/installation.md)**.
 
 After installation the app sits in `LOCAL_ONLY` mode, which is byte-identical to core Frappe
 behaviour. Nothing is sent anywhere until you configure a bucket and change the mode.
-
-**Deployment prerequisites** — the dedicated `cloud_migration` RQ queue, bucket and IAM
-settings, and the procedure for adopting an existing `frappe_s3_attachment` 0.2.x install — are
-in [docs/runbooks/deployment.md](docs/runbooks/deployment.md).
 
 ---
 
@@ -230,7 +208,7 @@ files it does not own is not the app's call.
 
 **What it does instead is detect and warn.**
 `cloud_file_storage.health.detect_public_private_residue` reports every file under
-`sites/<site>/public/private/` on each `bench migrate` (as an Error Log row) and in the settings
+`sites/<site>/public/private/` on every site migration (as an Error Log row) and in the settings
 health panel (`Test Connection` → `public_private_residue`). It moves nothing.
 
 **Remediation is the operator's job, and the app will not do it for you.** Check by hand:

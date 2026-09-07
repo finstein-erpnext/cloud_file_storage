@@ -521,11 +521,20 @@ def file_after_insert(doc, method=None):
 
 
 def validate_single_file_owner():
-	"""`write_file` and `override_doctype_class` are single-owner hooks.
+	"""Refuse to share a site with another File storage app, loudly and at install time.
 
-	`get_hook_method` takes index [0] and `override_doctype_class` is last-wins, so a
-	second storage app on the same site silently disables one of them. Called from
-	install/migrate so the failure is loud at install time, not at first upload.
+	`write_file` is single-owner on every version -- `get_hook_method` takes index [0], so a
+	second claimant silently disables one of them.
+
+	`override_doctype_class` is last-wins (base_document.py). On v15 this app registers there,
+	so a foreign claimant means one of the two is silently disabled. On v16 this app registers
+	through `extend_doctype_class` instead, which *composes* rather than replaces -- but a
+	foreign app still using the override would replace the composed class outright, so the
+	check stays exactly as useful there.
+
+	Deliberately not flagged: another app *extending* File on v16. Composition is the whole
+	point of that hook, and a coexisting extension that also claimed the write path would be
+	caught by the `write_file` check above.
 	"""
 	conflicts = []
 

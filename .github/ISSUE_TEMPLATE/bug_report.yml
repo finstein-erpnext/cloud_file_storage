@@ -9,7 +9,7 @@ body:
         Before filing, please check the following.
 
         1. **Do not report a security vulnerability here.** This tracker is public. Read
-           [SECURITY.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/SECURITY.md)
+           [SECURITY.md](https://github.com/finstein-erpnext/cloud_file_storage/blob/develop/SECURITY.md)
            and report privately.
         2. **Redact before you paste.** No access keys, no secret keys, no presigned URLs, no
            `site_config.json`, no customer data. A presigned URL is a live bearer token for the
@@ -17,7 +17,7 @@ body:
         3. Search existing issues first — duplicates are closed and pointed at the original.
         4. Only the tip of a supported line is fixed. `15.x` and `16.x` are supported;
            `frappe_s3_attachment` 0.2.x and earlier are end of life. See
-           [docs/supported-versions.md](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/docs/supported-versions.md).
+           [docs/supported-versions.md](https://github.com/finstein-erpnext/cloud_file_storage/blob/develop/docs/supported-versions.md).
         5. The six version/configuration questions below are what make a report reproducible.
            An answer of "latest" to any of them is not one.
 
@@ -160,7 +160,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow the [Code of Conduct](https://github.com/RamachandranMD/cloud_file_storage/blob/develop/CODE_OF_CONDUCT.md).
+      description: By submitting this issue, you agree to follow the [Code of Conduct](https://github.com/finstein-erpnext/cloud_file_storage/blob/develop/CODE_OF_CONDUCT.md).
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true

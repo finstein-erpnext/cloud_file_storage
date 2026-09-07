@@ -295,4 +295,4 @@ Initial ALYF fork release on `version-15` and `develop`, including all changes s
 [0.2.0]: https://github.com/alyf-de/frappe-attachments-s3/releases/tag/v0.2.0
 [0.2.1]: https://github.com/alyf-de/frappe-attachments-s3/releases/tag/v0.2.1
 [0.2.2]: https://github.com/alyf-de/frappe-attachments-s3/releases/tag/v0.2.2
-[1.0.0]: https://github.com/RamachandranMD/cloud_file_storage/releases/tag/v1.0.0
+[1.0.0]: https://github.com/finstein-erpnext/cloud_file_storage/releases/tag/v1.0.0
