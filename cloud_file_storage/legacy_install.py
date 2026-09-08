@@ -26,10 +26,16 @@ engine's job, not migrate's.
 
 **What this deliberately does NOT do.**
 
-* It does not rewrite `tabFile.file_url` (A10). The `override_whitelisted_methods` remap
-  keeps every `/api/method/frappe_s3_attachment.controller.generate_file?key=…` URL alive
-  forever, and those URLs also live in business fields, emails and bookmarks where no patch
-  can reach them. Canonicalisation is the adoption campaign's job.
+* It does not rewrite `tabFile.file_url` (A10). Those URLs also live in business fields,
+  emails and bookmarks where no patch can reach them, so canonicalisation is the adoption
+  campaign's job.
+
+  **A10 originally paired this with an `override_whitelisted_methods` remap that kept every
+  `/api/method/frappe_s3_attachment.controller.generate_file?key=…` URL alive.** That remap
+  was removed: the marketplace audit rejects overriding another app's whitelisted method.
+  `api.compat.legacy_generate_file` still ships and is still whitelisted, so an operator can
+  restore the remap from their own app -- but by default those URLs 404 until the campaign
+  has run. Run it before retiring the fork.
 * It does not rewrite `tabPatch Log`. The rename research (docs/research §6 step 19)
   prescribes rewriting the `frappe_s3_attachment.patches.` prefix, which is correct for a
   *rename in place* — the app keeps its patch history. This is a greenfield adoption
