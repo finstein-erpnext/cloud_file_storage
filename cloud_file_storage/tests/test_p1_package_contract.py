@@ -242,18 +242,22 @@ class TestHooksContract(unittest.TestCase):
 		self.assertEqual(self.hooks.app_license, "MIT")
 		self.assertEqual(self.hooks.app_version, cloud_file_storage.__version__)
 
-	def test_legacy_generate_file_is_remapped(self):
-		remap = self.hooks.override_whitelisted_methods
-		self.assertEqual(
-			remap.get("frappe_s3_attachment.controller.generate_file"),
-			"cloud_file_storage.api.compat.legacy_generate_file",
+	def test_no_whitelisted_method_override_is_declared(self):
+		"""Overriding another app's whitelisted method fails the marketplace audit.
+
+		`legacy_generate_file` itself is unchanged and still whitelisted -- only the remap
+		that pointed the fork's dotted path at it is gone. See hooks.py for the one-liner an
+		operator adds if they need fork-era URLs to keep resolving.
+		"""
+		self.assertFalse(
+			hasattr(self.hooks, "override_whitelisted_methods"),
+			"override_whitelisted_methods is rejected by the marketplace audit",
 		)
 
 	def test_every_hook_target_resolves(self):
 		targets = [self.hooks.after_install, self.hooks.after_migrate]
 		for events in self.hooks.doc_events.values():
 			targets.extend(events.values())
-		targets.extend(self.hooks.override_whitelisted_methods.values())
 
 		for dotted in targets:
 			with self.subTest(target=dotted):

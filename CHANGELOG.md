@@ -7,6 +7,25 @@ at that repository.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Removed
+- The `override_whitelisted_methods` remap pointing
+  `frappe_s3_attachment.controller.generate_file` at this app's handler. The Frappe Cloud
+  marketplace audit rejects overriding another app's whitelisted method.
+
+  **Operator impact.** On a site adopted from the 0.2.x fork, fork-era
+  `/api/method/frappe_s3_attachment...` URLs now return 404 until the migration campaign
+  canonicalises `file_url` -- which the compat patch deliberately does not do (A10). Run the
+  campaign before retiring the fork. `cloud_file_storage.api.compat.legacy_generate_file` is
+  unchanged and still whitelisted, so the remap can be reinstated from your own app or site
+  if you need those URLs resolving in the meantime; see README and hooks.py.
+
+### Changed
+- The File controller keeps `override_doctype_class` on this line: frappe v15 has no
+  `extend_doctype_class` hook. The 16.x line composes the class instead. Which is used is
+  probed from the framework, so the same source works on both.
+
 ## [15.0.0] - 2026-09-07
 
 Renumbering of the 1.0.0 release onto the **v15 line**. No functional change from 1.0.0

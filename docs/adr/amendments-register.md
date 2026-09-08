@@ -68,8 +68,15 @@ and its regression test.
   shared with the CLI).
 - **A10 one legacy endpoint** *(P3/P8)* —
   `cloud_file_storage.api.compat.legacy_generate_file` everywhere; the external-install
-  compat patch does NOT mass-rewrite `tabFile.file_url` (the `override_whitelisted_methods`
-  remap keeps old URLs alive); the adoption campaign is the canonicalization layer.
+  compat patch does NOT mass-rewrite `tabFile.file_url`; the adoption campaign is the
+  canonicalization layer.
+  **Amended (16.0.x / 15.0.x):** the `override_whitelisted_methods` remap that kept fork-era
+  URLs resolving is no longer shipped -- the Frappe Cloud marketplace audit rejects any
+  override of another app's whitelisted method, and a published listing was judged worth more
+  than an automatic remap. The endpoint is unchanged and still whitelisted; an operator can
+  reinstate the remap from their own app. The consequence is that on an adopted site those
+  URLs 404 until the campaign canonicalises them, so the campaign is now load-bearing rather
+  than merely tidy. Enforced by `test_compat.test_this_app_registers_no_whitelisted_method_override`.
 - **A11 aliases consumed** *(P3)* — `Cloud File URL Alias` ships in P3;
   `serving/private.py` consults it at the miss (before the Forbidden/NotFound outcome,
   re-running the permission gate on the resolved target) and `PublicFileRenderer` before

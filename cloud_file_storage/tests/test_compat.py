@@ -159,21 +159,38 @@ class TestLegacyGenerateFile(CloudStorageTestCase):
 		self.assertIn(compat.legacy_generate_file, frappe.whitelisted)
 		self.assertNotIn(compat.legacy_generate_file, frappe.guest_methods)
 
-	def test_the_fork_dotted_path_is_remapped_to_this_endpoint(self):
-		"""T-LEGACY — resolved the way `handler.execute_cmd` resolves it.
+	def test_this_app_registers_no_whitelisted_method_override(self):
+		"""The app must not override another app's whitelisted method.
 
-		A stored URL names `frappe_s3_attachment.controller.generate_file`, a module this
-		app does not ship. `execute_cmd` (`handler.py:64-68`) takes the FIRST
-		`override_whitelisted_methods` entry for that cmd, so the assertion is on the same
-		lookup rather than on the hooks dict having "something" in it.
+		The Frappe Cloud marketplace audit rejects it, so this is now a constraint rather
+		than a preference. Asserted through the same lookup `handler.execute_cmd` uses
+		(`handler.py:64-68`), so it fails if the remap is reintroduced by any route --
+		hooks.py, a patch, or another app on the bench shipping it on this app's behalf.
 		"""
 		cmd = "frappe_s3_attachment.controller.generate_file"
 
 		overrides = frappe.get_hooks("override_whitelisted_methods", {}).get(cmd, [])
+		ours = [o for o in overrides if o.startswith("cloud_file_storage.")]
 
-		self.assertTrue(overrides, "the fork endpoint is no longer remapped")
-		self.assertEqual(overrides[0], "cloud_file_storage.api.compat.legacy_generate_file")
-		self.assertIs(frappe.get_attr(overrides[0]), compat.legacy_generate_file)
+		self.assertEqual(ours, [], "this app must not remap the fork endpoint; see hooks.py")
+
+	def test_the_legacy_endpoint_survives_as_an_app_owned_method(self):
+		"""Removing the remap must not remove the capability.
+
+		An operator adopting a 0.2.x site can still point the fork path at this handler from
+		their own app or site config. If this endpoint is deleted outright that recovery is
+		gone, so its existence and its gate are asserted here rather than left implied.
+		"""
+		self.assertIn(
+			compat.legacy_generate_file,
+			frappe.whitelisted,
+			"the endpoint must stay whitelisted, or an operator cannot remap the fork path to it",
+		)
+		self.assertNotIn(
+			compat.legacy_generate_file,
+			frappe.guest_methods,
+			"the endpoint must never be reachable by a guest",
+		)
 
 
 class TestDeprecatedHookDetector(CloudStorageTestCase):

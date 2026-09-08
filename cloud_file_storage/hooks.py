@@ -85,23 +85,27 @@ after_job = ["cloud_file_storage.cache.writeback.flush_job"]
 # Keeps every `/api/method/frappe_s3_attachment.controller.generate_file?...` URL that
 # 0.2.x wrote into `tabFile.file_url` (and into business fields, emails and bookmarks)
 # resolving after the rename — see docs/adr/amendments-register.md A10.
-# Keeps URLs already in the wild working for a site adopted from the `frappe_s3_attachment`
-# 0.2.x fork (amendments register A10). Without it, every attachment link a user has already
-# bookmarked, emailed or embedded returns 404 the moment the fork is replaced.
+# NOT registered: `override_whitelisted_methods` remapping
+# `frappe_s3_attachment.controller.generate_file` to `api.compat.legacy_generate_file`.
 #
-# Signature compatibility, reviewed rather than assumed -- the fork declares
-# `generate_file(key: str | None = None, file_name: str | None = None)`
-# (frappe_s3_attachment/controller.py:266) and the replacement declares the identical
-# parameters (api/compat.py:43). The replacement is *stricter* than the original: it resolves
-# the File row first and runs its read permission gate before any URL is issued, refuses
-# guests, keeps every refusal indistinguishable so the endpoint is not an existence oracle,
-# and writes exactly one access-log row. Behaviour is covered by tests/test_compat.py and
-# contract/test_file_compat_contract.py.
+# The remap kept fork-era URLs resolving on an adopted site. It was removed because the
+# Frappe Cloud marketplace audit flags any override of another app's whitelisted method, and
+# a published listing was worth more than an automatic remap.
 #
-# Inert on a site that never ran the fork: nothing calls the path.
-override_whitelisted_methods = {
-	"frappe_s3_attachment.controller.generate_file": "cloud_file_storage.api.compat.legacy_generate_file",
-}
+# The endpoint itself is unchanged and still whitelisted -- `api.compat.legacy_generate_file`
+# resolves the File row, runs its read permission gate, refuses guests, keeps refusals
+# indistinguishable and writes one access-log row. An operator adopting a 0.2.x site who needs
+# the old URLs to keep resolving can add the remap in their own site or app:
+#
+#     override_whitelisted_methods = {
+#         "frappe_s3_attachment.controller.generate_file":
+#             "cloud_file_storage.api.compat.legacy_generate_file",
+#     }
+#
+# Without it, fork-era `/api/method/frappe_s3_attachment...` URLs 404. A10 leaves
+# `tabFile.file_url` unrewritten by the compat patch, so those rows depend on the migration
+# campaign -- the canonicalization layer -- to reach canonical URLs. Run it before retiring
+# the fork rather than relying on the remap. See docs/adr/amendments-register.md A10.
 
 # `scheduler_events` cannot target a custom queue (scheduled_job_type.py:181-182), so these
 # entries stay O(ms) dispatchers that enqueue the real work on `cloud_migration`.

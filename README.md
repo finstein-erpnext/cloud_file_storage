@@ -268,10 +268,27 @@ is gone and will not come back.
 
 ## Legacy URLs
 
-Every `/api/method/frappe_s3_attachment.controller.generate_file?...` URL written by 0.2.x keeps
-working: `override_whitelisted_methods` remaps it to
-`cloud_file_storage.api.compat.legacy_generate_file`. Stored `file_url` values are never
-mass-rewritten.
+Stored `file_url` values are never mass-rewritten, so `/api/method/frappe_s3_attachment...`
+URLs written by 0.2.x survive in File rows, business fields, emails and bookmarks.
+
+**Those URLs do not resolve on their own.** This app no longer ships the remap that pointed
+them at its own handler -- overriding another app's whitelisted method fails the Frappe Cloud
+marketplace audit. Two options when adopting a 0.2.x site:
+
+1. Run the migration campaign, which canonicalises `file_url` on every adopted row. This is
+   the supported path and the one the campaign exists for.
+2. If you need the old URLs to resolve in the meantime, add the remap yourself, in your own
+   app or site, pointing at the endpoint this app still ships:
+
+   ```python
+   override_whitelisted_methods = {
+       "frappe_s3_attachment.controller.generate_file":
+           "cloud_file_storage.api.compat.legacy_generate_file",
+   }
+   ```
+
+   The handler is unchanged: it resolves the File row, runs its read permission gate, refuses
+   guests and writes one access-log row.
 
 ---
 
